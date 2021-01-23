@@ -6,9 +6,8 @@ Welcome to Dynatrace Perform 2021!
 
 This page provides you with the class material : 
 
-- Presentation (PDF)
+- [Presentation PDF](https://github.com/steve-caron-dynatrace/hot2021-k8s-app-teams/raw/master/HOT%202021%20-%20Dynatrace%20for%20Cloud%20Application%20Teams%20running%20microservices%20on%20k8s.pdf)
 - [Exercise instructions](https://github.com/steve-caron-dynatrace/hot2021-k8s-app-teams/tree/master/Exercise_Instructions)
 
 Each class participant have his/her own dedicated environment. 
-You will find the information about your environment and credentials on the card that was handed out to you at check-in.
 
