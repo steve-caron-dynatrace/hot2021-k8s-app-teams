@@ -1,6 +1,6 @@
 ![perform](https://dt-cdn.net/images/performlogonav-260-8d9107d113.png)
 
-# Dynatrace for cloud application teams running microservices on Kubernetes
+# Dynatrace for cloud application teams running microservices on Kubernetes
 
 ## Workshop instructions
 
