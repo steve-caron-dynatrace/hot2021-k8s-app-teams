@@ -1,33 +1,12 @@
-## Exercise #10 Blue-Green Deployment
+## Exercise #09 Problem detection
 
-### A Comedy of Errors
+## Meanwhile...
 
-<u>Scenario</u>: So you averted a major disaster with the help of Dynatrace when you tested the new cart feature for the SockShop promo campaign...
+<u>Scenario</u>: Projects are moving fast within the company.
 
-But marketing is returning in force. :grinning: 
+The marketing team has a promo campaign they had implemented. The project was fast-tracked and there is an internal pressure to push it in production.
 
-The promo campaign release has been shortly delayed and the issue quickly duct-taped. Your demands for more testing time are rejected!
-
-![test_in_production](../../assets/images/test-in-production.jpg)
-
-Fortunately, you have a strategy.
-
-### Service Mesh at the rescue
-
-The Kubernetes platform team has recently deployed Istio, a service mesh, on your Kubernetes cluster. Istio provides dynamic traffic management capabilities, without any code change.
-
-You managed to convince the Sock Shop management to not expose the new <b>carts-v2</b> service to all customers. Initially, it will only be available for non-customers (users who are not logged in). Existing customers will stay on the current version <b>carts-v1</b>. The frontend was also cosmetically changed, depending the version, the header color will vary : v1 is in grey, v2 is in blue.
-
-### Let's deploy that v2!
-
-Go in the web terminal, make sure your are in the `exercises` directory. Execute the following:
-
-```sh
-$ ./toggle-sockshop-promo-ff.sh
-```
-
-
-![promo_socks](assets/promo_socks.png)
+![promo_socks](../../assets/images/promo_socks.png)
 
 - The deployment mode for this promo campaign is using a feature flag
 - By default, the promo is disabled but it can be enabled on the fly using an API call
@@ -43,7 +22,9 @@ Enable the promo feature by running the following command and enter `1` at the p
 ```sh
 $ ./toggle-sockshop-promo-ff.sh
 ```
+Keep an eye on your email inbox for the next few minutes... You should receive something the "Dynatrace team".
 
+![carts-dev-problem-email](../../assets/images/carts-dev-problem-email.png)
 
 ### Deploy new carts build in dev
 

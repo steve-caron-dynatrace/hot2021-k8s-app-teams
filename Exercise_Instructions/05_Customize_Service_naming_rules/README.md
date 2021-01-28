@@ -36,7 +36,7 @@ Let's apply that configuration in Dynatrace!
 - For the name format, we can enter free text and/or use placeholders.
   - Placeholders are in between brackets {} to distinguish them from free text
   - Enter this format : 
-    - `k8s-{ProcessGroup:KubernetesNamespace}.{ProcessGroup:KubernetesContainerName} {Service:WebServiceName}`
+    - `k8s-{ProcessGroup:KubernetesNamespace}.{ProcessGroup:KubernetesContainerName} {ProcessGroup:Kubernetes:canary} {Service:WebServiceName}`
 
 ![custom_service_naming_rule](../../assets/images/sockshop-service-naming-rule.png)
 
