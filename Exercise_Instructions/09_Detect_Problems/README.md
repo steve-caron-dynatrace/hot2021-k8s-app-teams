@@ -40,30 +40,30 @@ $ ./deploy-carts-new-build.sh
 
 <u>Keep an eye on the Slack channels and your emails</u> ... at one point you will receive one or two emails from the "Dynatrace team"
 
-![email_notification_cpu](assets/email_notification_cpu.png)
+![email_notification_cpu](../../assets/email_notification_cpu.png)
 
 - You can click on the Open in browser link or look at <b>Problems</b> in the Dynatrace menu
 
 - We see 2 hosts are experiencing CPU saturation
 
-    ![cpu_saturation_problems](assets/cpu_saturation_problems.png)
+    ![cpu_saturation_problems](../../assets/cpu_saturation_problems.png)
 
 - We see the same by looking at <b>Kubernetes</b> view which shows 2 problematic <b>nodes</b>
 
-    ![kubernetes_problematic_nodes](assets/kubernetes_problematic_nodes.png)
+    ![kubernetes_problematic_nodes](../../assets/kubernetes_problematic_nodes.png)
 
 - Click on <b>Analyze nodes</b> (bottom right) to get more details on the nodes. We see 2 nodes are at 99% CPU utilization
   
-    ![kubernetes_node_analysis](assets/kubernetes_node_analysis.png)
+    ![kubernetes_node_analysis](../../assets/kubernetes_node_analysis.png)
 
 - Drill-down into one of these 2 nodes to get to the <b>Host</b> view. 
 - Look at <b>CPU Usage</b>
 
-    ![host_cpu_usage](assets/host_cpu_usage.png)
+    ![host_cpu_usage](../../assets/host_cpu_usage.png)
 
 - Click on <b>Consuming processes</b>. The processes (containers) running on the host (node) will be listed. Sort them by `CPU usage` and you will see the culprit, the "hot new service" container. 
 
-    ![host_consuming_processes](assets/host_consuming_processes.png)
+    ![host_consuming_processes](../../assets/host_consuming_processes.png)
 
 - This issue had the potential to create bigger problems impacting the whole cluster and the rest of the workload. The pod definition in this case does not have any resource limit. But the service itself needs to be fixed and until then, we will remove this from the cluster.
 
@@ -76,17 +76,17 @@ $ ./deploy-carts-new-build.sh
 
 If you look back at Slack, you should have received notifications on the `#carts-support-ops` channel; if not, wait a bit.
   
-  ![slack_cart_support_ops_problem_open](assets/slack_carts_support_ops_problem_open.png)
+  ![slack_cart_support_ops_problem_open](../../assets/slack_carts_support_ops_problem_open.png)
 
 - Click on the link to drill-down to the <b>Problem</b> details
 
-    ![carts_promo_problem](assets/carts_promo_problem.png)
+    ![carts_promo_problem](../../assets/carts_promo_problem.png)
 
 - The <b>carts</b> service is experiencing a significant transaction failure rate increase, which is always bad but even worse this time because we are in the promo campaign. :rage: 
 - Getting back into Dynatrace
   - You can look drill-down to <b>Analyze failure rate degradation</b>
 
-    ![carts_promo_failure_analysis](assets/carts_promo_failure_analysis.png)
+    ![carts_promo_failure_analysis](../../assets/carts_promo_failure_analysis.png)
 
     - You can see the error message: something is not implemented right in the promo campaign... But this is affecting the whole <b>carts</b> service and no customer can add items to the cart anymore... This is bad... :grimacing:
     - Good thing we had the promo campaign deployed using a feature flag! We can easily turn off the flag and things should go back to normal.
@@ -97,7 +97,7 @@ If you look back at Slack, you should have received notifications on the `#carts
         ```
     - After a few minutes, you will get a message in the #carts-support-ops channel notifying the problem is resolved
   
-        ![slack_carts_support_ops_problem_resolved](assets/slack_carts_support_ops_problem_resolved.png)
+        ![slack_carts_support_ops_problem_resolved](../../assets/slack_carts_support_ops_problem_resolved.png)
 
 So Dynatrace helped the Kubernetes platform team to identify a rogue new service and remove it before it causes issues to the rest of the cluster workload.
 
@@ -107,15 +107,15 @@ What about the new build that the dev team is working on? We don't want to repea
 
 - Look at the `#carts-dev` Slack channel, there should be a problem notification (if not wait a bit).
 
-    ![slack_carts_dev_problem_open](assets/slack_carts_dev_problem_open.png)
+    ![slack_carts_dev_problem_open](../../assets/slack_carts_dev_problem_open.png)
 
 - Seems the currently tested new build is expriencing performance issues. Click on the problem link to drill down into the details.
 
-    ![carts_dev_problem](assets/carts_dev_problem.png)
+    ![carts_dev_problem](../../assets/carts_dev_problem.png)
 
 - Click on <b>Analyze response time degradation</b>
 
-    ![carts_dev_response_time_analysis](assets/carts_dev_response_time_analysis.png)
+    ![carts_dev_response_time_analysis](../../assets/carts_dev_response_time_analysis.png)
 
 - What we see here:
   1. The affected request is `addToCart`
@@ -123,7 +123,7 @@ What about the new build that the dev team is working on? We don't want to repea
   3. Top findings tell us that it is essentially all <b>Active wait time</b>
   4. Let's get down to code level by clicking on <b>View method hotspots</b>
 
-    ![carts_dev_method_hotspots](assets/carts_dev_method_hotspots.png)
+    ![carts_dev_method_hotspots](../../assets/carts_dev_method_hotspots.png)
 
 - What we see here:
   1. Click on <b>Hotspots</b> to switch from the call hierarchy to the hotspot view
@@ -136,11 +136,11 @@ This is the information the dev team need to fix the issue in the code.
 
 You can also get further down into deep dive by clicking on the drilldown to PurePaths button (top right)
 
-![drill_down_to_PurePaths](assets/drill_down_to_PurePaths.png)
+![drill_down_to_PurePaths](../../assets/drill_down_to_PurePaths.png)
 
 Click on one of the PurePaths listed. You can then look at the PurePath details, which are showing the calls to the MongoDB data store and also that the `addToCart` method is where the time is spent. 
 
-![carts_dev_purepath](assets/carts_dev_purepath.png)
+![carts_dev_purepath](../../assets/carts_dev_purepath.png)
 
 Since this build is bad, you will roll back to the previous build by executing the following commands:
 
@@ -150,7 +150,7 @@ $ kubectl rollout history deployments carts -n dev
 
 This will show you the deployment rollout story. Normally you should have two deployments. 
 
-![carts_dev_rollout_history](assets/carts_dev_rollout_history.png)
+![carts_dev_rollout_history](../../assets/carts_dev_rollout_history.png)
 
 That means you need to rollback to `Revision 1`
 
@@ -161,7 +161,7 @@ It will take about 5 minutes for the new carts pod to become ready.
 
 Eventually, you will receive a Slack message in the `#carts-dev` channel notifying the problem is resolved.
 
-![slack_carts_dev_problem_resolved](assets/slack_carts_dev_problem_resolved.png)
+![slack_carts_dev_problem_resolved](../../assets/slack_carts_dev_problem_resolved.png)
 
 <b><u>ONE LAST THING</u></b>You should disable or delete your alerting profiles after this class if you don't want to continue receive alert emails.
 
