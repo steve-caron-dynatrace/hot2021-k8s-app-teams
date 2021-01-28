@@ -45,7 +45,7 @@ In the pod template definition, you can see there are 2 containers defined. One 
 
 ![mongodb-pod-template-containers](../../assets/images/mongodb-pod-template-containers.png)
 
-Having the sidecar container is not sufficent. We most have the pod specifically annotated to tell the Dynatrace ActiveGate to scrape the metrics from its endpoint.
+Having the sidecar container is not sufficent. We must have the pod specifically annotated to tell the Dynatrace ActiveGate to scrape the metrics from its endpoint.
 
 ![mongodb-pod-template-annotations](../../assets/images/mongodb-pod-template-annotations.png)
 

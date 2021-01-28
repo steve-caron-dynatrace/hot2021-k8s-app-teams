@@ -44,7 +44,7 @@ The <b>carts</b> pod takes about 5 minutes to be ready.
 
 Or, if you did not set up the email configuration, keep an eye at the Dynatrace console. At some point, a number highlighted in red will show up in the top right corner.
 
-Also, you can go in the Menu -> <b>Problems</b>. You will see a blue header offering to try the new problem feed. Click on <b>Try it out</b>.
+Also, you can go in the Menu -> <b>Problems</b>. You will see a turquoise header offering to try the new problem feed. Click on <b>Try it out</b>.
 
 ![carts-dev-problems-feed](../../assets/images/carts-dev-problems-feed.png)
 

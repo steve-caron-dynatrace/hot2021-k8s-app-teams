@@ -6,7 +6,7 @@ Take a quick look at the current <b>Service</b> naming as automatically assigned
 
 You can see <b>Services</b> in different locations in the Dynatrace console
 
-- <b>Service & Transactions</b> view
+- <b>Transactions and services</b> view
 - <b>Technologies/Process Groups</b> view : for a given <b>Process Group</b>, the infographic shows the <b>Service</b> implemented by the <b>Process Group</b>
 - <b>Smartscape</b>
 
