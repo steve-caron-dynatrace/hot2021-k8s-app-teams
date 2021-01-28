@@ -6,7 +6,7 @@
 
 The marketing team has a promo campaign they had implemented. The project was fast-tracked and there is an internal pressure to push it in production.
 
-![promo_socks](assets/promo_socks.png)
+![promo_socks](../../assets/images/promo_socks.png)
 
 - The deployment mode for this promo campaign is using a feature flag
 - By default, the promo is disabled but it can be enabled on the fly using an API call

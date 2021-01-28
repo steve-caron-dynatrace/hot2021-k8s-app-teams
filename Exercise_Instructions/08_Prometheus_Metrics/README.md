@@ -1,4 +1,4 @@
-## Exercise #xx Ingest Prometheus Metrics
+## Exercise #8 Ingest Prometheus Metrics
 
 ### Context
 

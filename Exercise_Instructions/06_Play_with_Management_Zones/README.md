@@ -49,7 +49,7 @@ The rule will be based on Process groups <b>(1)</b>.
 
 The condition is based on a <b>Process Group</b> tag <b>(2)</b>, `product`, auto-imported from a Kubernetes label and of value equal to `sockshop` <b>(3)</b> 
 
-![management_zone_rule_sockshop](assets/management_zone_rule_sockshop.png)
+![management_zone_rule_sockshop](../../assets/images/management_zone_rule_sockshop.png)
 
 ### Preview Management Zone rule
 
@@ -86,7 +86,7 @@ You now see the <b>Management Zone</b> will apply to <b>Services</b> and infrast
 - You will see a funnel icon appear in the top menu bar
 - Clicking on this button will list the available <b>Management Zones</b> 
 
-![management_zones_filter](assets/management_zones_filter.png)
+![management_zones_filter](../../assets/images/management_zones_filter.png)
 
 - Select a <b>Management Zone</b> and navigate to the <b>Services</b> and <b>Technologies</b> views. Notice the difference, the lists are filtered according to the selected zone.
 

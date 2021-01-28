@@ -86,11 +86,11 @@ This is helpful to understand how Dynatrace come out with auto-discovered servic
 
 Navigate to the <b>Transactions & Services</b> view to look at the applied custom service naming rules.
 
-![service_naming_validation](assets/service_naming_validation.png)
+![service_naming_validation](../../assets/images/service_naming_validation.png)
 
 It might take a few seconds for all services to show up with the new names. If the naming doesn't change, it's probably that you forgot to save the rule... You will have to repeat the previous steps to create it again. :unamused:
 
-![service_naming_rules](assets/service_naming_rules.png)
+![service_naming_rules](../../assets/images/service_naming_rules.png)
 
 Hey, wait a minute! What about the simulated `findJourneysService` that we created for EasyTravel. We can't find it anymore!
 Remember, the naming rule uses the container name; `findJourneysService` is not yet a microservice, it doesn't run in its own container but still run in the `easytravel-backend` container.
@@ -105,7 +105,7 @@ What you can do *** optional **** is to create a specific service naming rule fo
 - Click Preview
 - <u>DO NOT FORGET TO SAVE!!!</u>
 
-[easytravel-custom-service-detection-rule2](../../assets/images/easytravel-custom-service-detection-rule2.png)
+![easytravel-custom-service-detection-rule2](../../assets/images/easytravel-custom-service-detection-rule2.png)
 
 Now, because you created that latest rule after the others, it will show up at the bottom of the list.
 
@@ -113,7 +113,7 @@ Now, because you created that latest rule after the others, it will show up at t
 - Because the rule you created for the Custom Service (findJourneyService) is more specific, you want it applied before the other more generic EasyTravel naming rule. 
 - Use the arrow to move up and down the rules.
 
-[service-naming-rules](../../assets/images/service-naming-rules.png)
+![service-naming-rules](../../assets/images/service-naming-rules.png)
 
 You can validate everything is in order in the <b>Transactions and Services</b> view.
 
