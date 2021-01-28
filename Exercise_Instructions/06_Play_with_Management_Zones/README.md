@@ -101,7 +101,7 @@ The Kubernetes view will also be empty.
 
 ### ***Optional*** Add the missing rules for `app:sockshop` Management Zone
 
-This part is optional. If you want to do it manually in the Dynatrace console, the instructions are below. But there is a certain amount of repetive clicking involved... :unamused:
+This part is optional. If you want to do it manually in the Dynatrace console, the instructions are below. But there is a certain amount of repetitive clicking involved... :unamused:
 
 Otherwise you can skip this section and go to the next section where you will automtically import the Management Zone rules using a script... :muscle:
 
