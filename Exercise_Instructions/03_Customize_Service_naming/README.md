@@ -1,4 +1,4 @@
-## Exercise #4 Custom Service naming rules for Kubernetes
+## Exercise #3 Custom Service naming rules for Kubernetes
 
 ### Explore auto-detected Service names
 
@@ -27,7 +27,7 @@ Target Service naming convention :  `k8s-project-namespace-app Web Service Name`
 
 Let's apply that configuration in Dynatrace!
 
-- Go in <i>Settings -> Server-side service monitoring -> Service naming rules</i> and click <b>Add a new rule</b>
+- Go in <b>Settings -> Server-side service monitoring -> Service naming rules</b> and click <b>Add a new rule</b>
 - Provide a name to the rule, for example : `Sock Shop service names`
 - First, we want this rule to apply only to containerized processes running in Kubernetes. This is done by defining a condition.
   - In the conditions drop-down, select the property `"Kubernetes namespace"` and the condition `"exists"`
@@ -39,7 +39,11 @@ Let's apply that configuration in Dynatrace!
   - Enter this format : 
     - `k8s-{ProcessGroup:KubernetesNamespace}.{ProcessGroup:KubernetesContainerName} {ProcessGroup:Kubernetes:canary} {Service:WebServiceName}`
 
+&nbsp;
+
 ![custom_service_naming_rule](../../assets/images/sockshop-service-naming-rule.png)
+
+&nbsp;
 
 ### Preview 
 
@@ -56,6 +60,8 @@ This is possible! :grinning:
 - Once done with Preview, click <b>Create rule</b>
 - And <u><b>DON'T FORGET</b></u> to save (button at the bottom right)
 
+&nbsp;
+
 ### Custom service naming rule for EasyTravel
 
 Because EasyTravel is not yet fully onboarded in Kubernetes, it does not yet follow the same policies as Sock Shop in terms of labeling, annotations and namespaces. We still want to make the EasyTravel services naming more intuitive but we will use a different rule than with Sock Shop.
@@ -67,17 +73,27 @@ Repeat the same procedure as with Sock Shop:
 - Condition #1 : `"Kubernetes namespace"` does `"exists"`
 - Condition #2 : `"Process group tags"` does `"equals"` tag name `[Kubernetes]product` with tag value `easytravel`
 
+&nbsp;
+
 ![easytravel-service-naming-rule](../../assets/images/easytravel-service-naming-rule.png)
+
+&nbsp;
 
  - Preview:
 
+&nbsp;
+
 ![easytravel-service-naming-preview](../../assets/images/easytravel-service-naming-preview.png)
+
+&nbsp;
 
 - Click <b>Create rule</b> and <u><b>DON'T FORGET</b></u> to click the <b>Save</b> button!
 
+&nbsp;
+
 ### Built-in rules
 
-You will notice there is a section named builtin rules. This is where the out-of-the-box service naming rules are defined. 
+You will notice there is a section named <b>Built-in rules</b>. This is where the out-of-the-box service naming rules are defined. 
 
 This is helpful to understand how Dynatrace come out with auto-discovered service names. 
 
