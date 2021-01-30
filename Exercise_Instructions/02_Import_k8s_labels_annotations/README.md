@@ -50,19 +50,35 @@ In the Dynatrace console:
 
 ### Search/filter with tags based on labels
 
-- Go in the <b>Technologies</b> or the <b>Services and Transactions</b> view. 
-
-- In the Filtered by text box, you will see the available tags that you can select.
-
-![filter_by_tag](../../assets/images/filter_by_tag.png)
-
 You can also perform searches for label values in the Super Search box!
+
+&nbsp;
 
 ![super_search_box_tag](../../assets/images/super_search_box_tag.png)
 
+&nbsp;
+
 You will see that not only <b>Processes</b> are showing up but <b>Services</b> too. This is because the labels are automatically propagated from the <b>Process</b> entity to the <b>Service</b> implemented by the process!
 
-- Select and drill-down the service to see the labels attached as tags.
+- Select and drill-down one of the service to see the labels attached as tags.
+
+&nbsp;
+
+[service-k8s-label-as-tag](../../assets/images/service-k8s-label-as-tag.png)
+
+&nbsp;
+
+You can also use the labels-as-tags to filter the <b>Services</b> list.
+
+- Go to: <b>Menu -> Services and Transactions</b>
+
+- In the Filtered by text box, select <b>Tag</b> and you will then see the available tags that you can select.
+
+&nbsp;
+
+![filter_by_tag](../../assets/images/filter_by_tag.png)
+
+&nbsp;
 
 You might have noticed that it is also possible, in the <i>Services and Transactions</i> view, to filter by other Kubernetes properties such as cluster, namespaces, namespace labels and workload label. 
 
