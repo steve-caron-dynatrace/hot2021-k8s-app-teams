@@ -4,7 +4,9 @@
 
 The company is growing. It recently acquired another company called HipsterShop. They have their own app already in microservices and running in Kubernetes. In order to have everything in one single pane of glass, the business decided to onboard HipsterShop on Dynatrace.
 
-The HipsterShop acquisition is a significant financial investment. It's getting a lot of board and executive eyeballs, schedules are tights and margin of errors are low. You can't afford much resources and time but you need the visibility in order to migrate the app succesfully and get the most value out of it.
+The HipsterShop acquisition is a significant financial investment. It's getting a lot of board and executive eyeballs, schedules are tights and margin of errors are low. For now, this project has been added to your plate (because, you're the best!).
+
+You can't afford much resources and time but you need the visibility in order to migrate the app successfully and get the most value out of it.
 
 Luckily, you have Dynatrace.
 
@@ -106,11 +108,11 @@ The <b>Kubernetes</b> view will also be empty.
 
 - Again, this is normal. The Management Zone we created for Sock Shop currently applies only for two entity types: <b>Services</b> and <b>Process/Process Groups</b>. To provide visibility on the Kubernetes workloads (aka <b>Cloud Applications</b>), we need to add rules for that in the `app:sockshop` Management Zone.
 
-### ***Optional*** Add the missing rules for `app:sockshop` Management Zone
+### <i>OPTIONAL</i> - Add the missing rules for `app:sockshop` Management Zone
 
 This part is optional. If you want to do it manually in the Dynatrace console, the instructions are below. But there is a certain amount of repetitive clicking involved... :unamused:
 
-Otherwise you can skip this section and go to the next section where you will automtically import the Management Zone rules using a script... :muscle:
+Otherwise you can skip this section and go to the next section where you will automatically import the Management Zone rules using a script... :muscle:
 
 - Go back to the Management Zones configuration screen : Menu -> <b>Settings -> Preferences -> Management Zones</b>
 - Edit the `app:sockshop` Management Zone
@@ -124,7 +126,7 @@ Otherwise you can skip this section and go to the next section where you will au
 - Edit the `app:sockshop` Management Zone
 - Add the following rule to include the <b>Synthetic Monitors</b> in the scope of the Management Zone.
   - Rule applies to : `Browser monitors`
-  - Conditions : `Web application tags` `equals` `product` `sockshop`
+  - Conditions : `Browser monitor tags` `equals` `product` `sockshop`
   - <u><b>DON'T FORGET</b> to click on <b>Create rule</b> and then on the <b>Save</b> button!</u> 
 
 ![sockshop-mz-rule-synthetic](../../assets/images/sockshop-mz-rule-synthetic.png)
@@ -148,7 +150,7 @@ Otherwise you can skip this section and go to the next section where you will au
 - Edit the `app:sockshop` Management Zone
 - Add the following rule to include the <b>Kubernetes cluster</b> in the scope of the Management Zone.
   - Rule applies to : `Kubernetes cluster`
-  - Conditions : `Kubernetes cluster` `equals` `dynatrace-workshop`
+  - Conditions : `Kubernetes cluster name` `equals` `dynatrace-workshop`
   - <u><b>DON'T FORGET</b> to click on <b>Create rule</b> and then on the <b>Save</b> button!</u> 
 
 ![sockshop-mz-rule-cluster](../../assets/images/sockshop-mz-rule-cluster.png)
