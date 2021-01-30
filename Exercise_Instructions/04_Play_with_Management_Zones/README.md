@@ -1,4 +1,4 @@
-## Exercise #6 Playing with Management Zones
+## Exercise #4 Playing with Management Zones
 
 ### We're growing, we're hiring!
 
@@ -10,11 +10,10 @@ Luckily, you have Dynatrace.
 
 ### Deploy a new application
 
-Go in the web terminal
+Go in the web terminal (be sure you are in the `exercises` directory), execute:
 
 ```sh
-$ cd $HOME/dynatrace-k8s/hipstershop
-$ ./setup.sh
+$ ./deploy-hipstershop.sh
 ```
 HipsterShop is now deployed on your Kubernetes cluster.
 
@@ -77,8 +76,12 @@ You now see the <b>Management Zone</b> will apply to <b>Services</b> and infrast
 
 ![preview_management_zone_rule_services](../../assets/images/preview_management_zone_rule_services.png)
 
+&nbsp;
+
 - Click on the <b>Create rule</b> button.
 - <u><b>DON'T FORGET</b> to click on the <b>Save</b> button!</u> 
+
+&nbsp;
 
 ### Validate in Dynatrace
 
@@ -86,7 +89,11 @@ You now see the <b>Management Zone</b> will apply to <b>Services</b> and infrast
 - You will see a funnel icon appear in the top menu bar
 - Clicking on this button will list the available <b>Management Zones</b> 
 
+&nbsp;
+
 ![management_zones_filter](../../assets/images/management_zones_filter.png)
+
+&nbsp;
 
 - Select a <b>Management Zone</b> and navigate to the <b>Services</b> and <b>Technologies</b> views. Notice the difference, the lists are filtered according to the selected zone.
 
@@ -95,7 +102,7 @@ You might have noticed that the <b>Applications</b> and <b>Synthetic Monitors</b
 - This is normal. <b>Applications</b> and <b>Synthetic Monitors</b> do not inherit auto-tags from <b>Services</b>, <b>Process Groups</b> or <b>Hosts</b>. 
 - They need their own tags to be defined and a corresponding <b>Management Zone rule</b> to be added.
 
-The Kubernetes view will also be empty.
+The <b>Kubernetes</b> view will also be empty.
 
 - Again, this is normal. The Management Zone we created for Sock Shop currently applies only for two entity types: <b>Services</b> and <b>Process/Process Groups</b>. To provide visibility on the Kubernetes workloads (aka <b>Cloud Applications</b>), we need to add rules for that in the `app:sockshop` Management Zone.
 
@@ -152,7 +159,7 @@ The finalized Management Zone will look like this:
 
 ![sockshop-mz-rules](../../assets/images/sockshop-mz-rules.png)
 
-Now repeat the same steps for EasyTravel and Hipster Shop!!! :goberserk: :goberserk: :goberserk: 
+Now repeat the same steps for EasyTravel and Hipster Shop!!! :exploding_head:
 
 Just kidding. In the next section, we will import those Management Zone rules via a script.
 
