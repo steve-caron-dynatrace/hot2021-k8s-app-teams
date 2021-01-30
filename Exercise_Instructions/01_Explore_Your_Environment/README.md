@@ -4,7 +4,11 @@
 
 Each of you have access to two environments that you will use for the workshop exercises.
 
+&nbsp;
+
 ![ ](../../assets/images/perform-lab-environment.png)
+
+&nbsp;
 
 1. Your own Dynatrace SaaS tenant. Click on view environment to launch a new browser tab with the login page. Enter the credentials provided.
 2. An EKS bastion host providing you a web-based Linux shell terminal to execute scripts associated to your exercises that will essentially:
@@ -12,7 +16,7 @@ Each of you have access to two environments that you will use for the workshop e
       - Interact with your Dynatrace environment via REST API
       - Interact with your lab applications
 
-<b>(3)</b>Once you open your terminal, you have access to the prompt. You can slide the divider bar to make the terminal space occupy a larger potion of the screen.  
+Once you open your terminal <b>(3)</b>, you have access to the prompt. You can slide the divider bar to make the terminal space occupy a larger portion of the screen.  
 
 #### Bastion Host
 
@@ -52,11 +56,33 @@ The dashboard also contains the following information:
 - Link to your SockShop production home page
 - Dynatrace API token. You should not need this except for troubleshooting purposes
 
-### Scenario
+### HaveFunCompany applications
 
-Load the Sock Shop app page in your browser.
 
-![sockshop](assets/sockshop.png)
+
+#### Sock Shop
+
+The board of HaveFunCompany have mandated the executives to diversify the business activities. Researches from the marketing and business development departments have concluded that the "online sock apparel retail business" is up for grabs. 
+
+&nbsp;
+
+![so-tell-me-again-how-does-anything-your-marketing-department-says-actually-become-reality](../../assets/images/so-tell-me-again-how-does-anything-your-marketing-department-says-actually-become-reality.jpg)
+
+&nbsp;
+
+Anyway... the outcomes of this is the Sock Shop project. The company hired the best architects and developers to build the ecommerce web site using the latest trends and technologies. 
+
+Of course, the CIO decided that it <i>has</i> to be cloud-native and run on Kubernetes. You have been transferred from EasyTravel to Sock Shop and named the application lead, with the responsibility to make this new business technically successful.
+
+- A important factor in the success of cloud-native and microservices initiatives is the ability to get <i>observability</i>. 
+- You have been using Dynatrace to provide 360 degrees insights on EasyTravel, the company flagship application. But EasyTravel is a monolithic app that has only been recently lifted and shifted to run in containers.
+- Sock Shop is a very different beast. It's designed to be cloud-native. Your Dynatrace account exec told you Dynatrace works with cloud-native. Well, it's time to give it a shot! :metal:
+
+Let's first get a bit more familiar with the Sock Shop application.
+
+Load the Sock Shop app page in your browser (from the link available in your very own dashboard).
+
+![sockshop-home-page](../../assets/images/sockshop-home-page.png)
 
 Play around! 
 
