@@ -1,4 +1,4 @@
-## Exercise #3 Set up automatic import of Kubernetes labels and annotations
+## Exercise #2 Set up automatic import of Kubernetes labels and annotations
 
 ### Explore metadata in pod definitions
 
@@ -64,7 +64,7 @@ You will see that not only <b>Processes</b> are showing up but <b>Services</b> t
 
 &nbsp;
 
-[service-k8s-label-as-tag](../../assets/images/service-k8s-label-as-tag.png)
+![service-k8s-label-as-tag](../../assets/images/service-k8s-label-as-tag.png)
 
 &nbsp;
 
@@ -80,17 +80,19 @@ You can also use the labels-as-tags to filter the <b>Services</b> list.
 
 &nbsp;
 
-You might have noticed that it is also possible, in the <i>Services and Transactions</i> view, to filter by other Kubernetes properties such as cluster, namespaces, namespace labels and workload label. 
+You might have noticed that it is also possible, in the <b>Services and Transactions</b> view, to filter by other Kubernetes properties such as cluster, namespaces, namespace labels and workload label. 
 
 ![kubernetes_properties_filtering](../../assets/images/kubernetes_properties_filtering.png)
 
 ### Your very own dashboard - take 1
 
-One of the nice thing you can do with the tags is that you can create a custom view with a filtered list of <b>Services</b> and pin that to a dashboard. As you can imagine, in large environments, the list of services can get quite long and it becomes time consuming to sift through the list. And having to go through the clicking to set tags in the filter bar every time is quite repetitive.
+ As you can imagine, in large environments, the list of services can get quite long and it becomes time consuming to sift through the list. And having to go through the clicking to set tags in the filter bar every time is quite repetitive.
 
-There's a better way.
+There has to be a better way.
 
 As you log in the Dynatrace console, you want, within a single click, to be able to access the list of services for the Sock Shop product and only the services running in the production environment. You don't want anything else in that list that would distract you.
+
+One of the nice things you can do with the tags is that you can create a custom view with a filtered list of <b>Services</b> and pin that to a dashboard.
 
 - Go to <b>Menu -> Transactions and Services</b>
 - In the filter text box <b>(1)</b>, select:
