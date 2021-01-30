@@ -1,4 +1,4 @@
-# Exercise #7 Set up alert notifications
+# Exercise #5 Set up alert notifications
 
 <u>Scenario:</u> 
 
@@ -19,8 +19,8 @@ For example:
 ### Create an Alerting Profile for the carts service dev team
 
 - In the menu, go in <i>Settings -> Alerting -> Alerting profiles</i>
-- Create a new profile named : `carts dev`
-- In the <b>Define management zone filter for profile</b> select `ns:dev`
+- Create a new profile named : `sockshop carts dev`
+- In the <b>Define management zone filter for profile</b> select `app:sockshop`
 - The dev team environment have their apps running under tests. 
   - The test environments are not always up. 
   - So they're not concerned by availability. 
@@ -35,11 +35,14 @@ For example:
   - From <b>Filter problems by tag</b>, select `Only include entities that have all tags`
   - Click <b>Create tag filter</b>
   - Select tag : `[Kubernetes]app:carts`
+  - Click <b>Create tag filter</b>
+  - Select tag : `[Kubernetes]stage:dev`
   - Click <b>Save</b>
 - Once you have done all 3 rules, your <b>Alerting Profile</b> configuration should like below: 
 
-    ![alerting_profile_carts_dev]../../assets/images/alerting_profile_carts_dev.png)
+![sockshop-carts-dev-alerting-profile](../../assets/images/sockshop-carts-dev-alerting-profile.png)
 
+&nbsp;
 
 ## Kubernetes platform admin team
 

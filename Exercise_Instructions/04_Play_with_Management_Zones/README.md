@@ -159,7 +159,7 @@ The finalized Management Zone will look like this:
 
 ![sockshop-mz-rules](../../assets/images/sockshop-mz-rules.png)
 
-Now repeat the same steps for EasyTravel and Hipster Shop!!! :exploding_head:
+Now repeat the same steps for EasyTravel and Hipster Shop!!! :exploding_head: :exploding_head: :exploding_head:
 
 Just kidding. In the next section, we will import those Management Zone rules via a script.
 
@@ -171,11 +171,11 @@ We want a Management Zone just for that.
 
 We also need Management Zones for the other apps: EasyTravel and HipsterShop.
 
-...and we might not have completed the Sock Shop Management Zone configuration via the console.
+...and we might not have completed the Sock Shop Management Zone configuration via the console. :sleeping:
 
 No worry!!! 
 
-Dynatrace provide a rich REST API that can be used, among other things, to automate configuration. 
+Dynatrace provides a rich REST API that can be used, among other things, to automate configuration. 
 
 And we have a script that will use the API to save time and create the Management Zones for you! :sunglasses:
 
@@ -208,6 +208,6 @@ We won't configure Role-Based-Access-Control enforced by Management Zones. This 
 
 ---
 
-[Previous : #5 Customize Service naming rules for Kubernetes](../05_Customize_Service_naming_rules) :arrow_backward: :arrow_forward: [Next : #7 Create Management Zones by namespace](../07_Management_Zones_by_namespace)
+[Previous : #3 : Customize Service Naming](../03_Customize_Service_naming/README.md) :arrow_backward: :arrow_forward: [Next : #5 : Set up Alerting Profiles](../05_Set_up_Alerting_Profiles/README.md)
 
 :arrow_up_small: [Back to overview](../README.md)

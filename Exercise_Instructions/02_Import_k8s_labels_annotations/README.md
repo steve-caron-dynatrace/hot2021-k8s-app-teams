@@ -8,22 +8,21 @@ List all the Sock Shop pods running:
 $ kubectl get po -l product=sockshop --all-namespaces 
 ```
 
-Pick up a pod a namespace (`sockshop-dev` for example), copy its name and get the pods details, including the <i>Labels</i> and the <i>Annotations</i>. 
+Let's look at the description of the `carts` pod in the `sockshop-dev` namespace. 
 
 ```sh
-$ kubectl describe po <pod_name> -n sockshop-dev
+$ kubectl describe po -l app=carts -n sockshop-dev
 ```
-Reaplce <pod_name> with the name of the pod you have copy-pasted.
 
 ![pod_describe](../../assets/images/pod_describe.png)
 
 ### Grant viewer role to service accounts
 
-Those Labels and Annotations are centrally defined and managed in Kubernetes but we also want them available in Dynatrace for grouping, filtering and contextualization purposes. In Dynatrace, grouping and filtering is typically done by the use of <b>tags</b>; context is provided by entity <b>properties</b>.
+Those <b>Labels</b> and <b>Annotations</b> are centrally defined and managed in Kubernetes but we also want them available in Dynatrace for grouping, filtering and contextualization purposes. In Dynatrace, grouping and filtering is typically done by the use of <b>tags</b>; context is provided by entity <b>properties</b>.
 
 The OneAgent will use a pod <i>service account</i> to query for this metadata via the Kubernetes REST API.
 
-The service accounts must be granted viewer role in order to have this access.
+The service accounts must be granted <b>viewer</b> role in order to have this access.
 
 In the terminal, execute the following command to grant viewer role. This needs to be done for each <b>namespace</b>.
 
@@ -31,17 +30,15 @@ In the terminal, execute the following command to grant viewer role. This needs 
 $ kubectl -n sockshop-production create rolebinding default-view --clusterrole=view --serviceaccount=sockshop-production:default
 ```
 
-You can repeat the procedure for the `sockshop-dev` namespace.
+Repeat the procedure for the `sockshop-dev` namespace.
 
 ```sh
 $ kubectl -n sockshop-dev create rolebinding default-view --clusterrole=view --serviceaccount=sockshop-dev:default
 ```
 
-### Wait...
+### Wait... or not
 
-Wait a few minutes :grinning: seriously, let's take a 10 minutes break here
-
-![keep_calm](../../assets/images/keep_calm.png)
+Normally you would have to wait between 5-10 minutes before the labels and annotations show up as tags and properties in Dynatrace for the <b>Processes</b> and <b>Services</b> entities. But you won't have to wait :grinning:. Those commands have already been executed during the environment bootstraping.
 
 In the Dynatrace console: 
 
@@ -63,7 +60,7 @@ You can also perform searches for label values in the Super Search box!
 
 ![super_search_box_tag](../../assets/images/super_search_box_tag.png)
 
-You will see that not only <b>Processes</b> are showing up but <b>Services</b> too. This is because the labels are automatically propagated from the process (container) entity to the servics implemented by the process!
+You will see that not only <b>Processes</b> are showing up but <b>Services</b> too. This is because the labels are automatically propagated from the <b>Process</b> entity to the <b>Service</b> implemented by the process!
 
 - Select and drill-down the service to see the labels attached as tags.
 
@@ -71,8 +68,40 @@ You might have noticed that it is also possible, in the <i>Services and Transact
 
 ![kubernetes_properties_filtering](../../assets/images/kubernetes_properties_filtering.png)
 
+### Your very own dashboard - take 1
+
+One of the nice thing you can do with the tags is that you can create a custom view with a filtered list of <b>Services</b> and pin that to a dashboard. As you can imagine, in large environments, the list of services can get quite long and it becomes time consuming to sift through the list. And having to go through the clicking to set tags in the filter bar every time is quite repetitive.
+
+There's a better way.
+
+As you log in the Dynatrace console, you want, within a single click, to be able to access the list of services for the Sock Shop product and only the services running in the production environment. You don't want anything else in that list that would distract you.
+
+- Go to <b>Menu -> Transactions and Services</b>
+- In the filter text box <b>(1)</b>, select:
+  -  `Tag` `[Kubernetes]product` `sockshop`
+  -  `Tag` `[Kubernetes]stage` `prod`
+- Click on the edit icon (pencil) next to the screen title (Services). <b>(2)</b> Change the title to: `SockShop Prod services` and click on the check mark to confirm. 
+- Click on <b>Pin to dashboard</b> <b>(3)</b>
+
+![sockshop-prod-services-filtering](../../assets/images/sockshop-prod-services-filtering.png)
+
+- By default, your very own dashboard should be selected, otherwise please do so
+- Click on <b>Pin</b> then </b>Open dashboard</b>
+
+![pin-to-dashboard](../../assets/images/pin-to-dashboard.png)
+
+Your dashboard should look like this. Don't forget to click the <b>Done</b> button.
+
+![your_very_own_dashboard-2](../../assets/images/your-very-own-dashboard-2.png)
+
+&nbsp;
+
+Now from this starting dashboard, you can click on the <b>SockShop Prod services</b> tile and directly drill-down to the filtered service view! 
+
+&nbsp;
+
 ---
 
-[Previous : #2 Deploy the OneAgent Operator](../02_Deploy_OneAgent_Operator) :arrow_backward: :arrow_forward: [Next : #4 Customize Process Group naming rules for k8s](../04_Customize_PG_naming_rules)
+[Previous : #1 : Explore your Environment](../01_Explore_Your_Environment/README.md) :arrow_backward: :arrow_forward: [Next : #3 : Customize Service Naming](../03_Customize_Service_naming/README.md)
 
 :arrow_up_small: [Back to overview](../README.md)

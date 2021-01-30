@@ -1,4 +1,4 @@
-## Exercise #5 Custom Service naming rules for Kubernetes
+## Exercise #4 Custom Service naming rules for Kubernetes
 
 ### Explore auto-detected Service names
 
@@ -12,17 +12,18 @@ You can see <b>Services</b> in different locations in the Dynatrace console
 
 ### Configure custom Service naming rules
 
-We want to achieve with <b>Services</b> is having services showing up with names that tells us:
+What we want to achieve with <b>Services</b> is having them showing up with names that tells us:
 
-- Whether the <b>Services</b> are running in Kubernetes or not. Have Service name start with `k8s` for those in Kubernetes
-- What project is the <b>Service</b> part of. Your company likely has multiple projects running in the same cluster.
-- The <b>Service</b> namespace, which in our case with Sock Shop also tells us if it's production or dev
-- The container name, which correspond to our microservice name
+- Whether the <b>Services</b> are running in Kubernetes or not. Have <b>Service</b> name start with `k8s` for those in Kubernetes
+- What project is the <b>Service</b> part of. HaveFunCompany has multiple projects running in the same cluster.
+- The <b>Service</b> namespace, which in our case with Sock Shop also tells us if it's production or development.
+- The name of the container, which corresponds to our microservice name
+- Optionnally, the value of the `canary` annotation, which would the version of a canary release (e.g. v1, v2). Stable releases don't have this annotation.
 - In some cases, SpringBoot for example, there can be multiple web services for the same Java process. So we also want to see the Web Service name. 
 
 Let's start with the Sock Shop application
 
-Target Service naming convention :  `k8s-project-namespace-container Web Service Name`
+Target Service naming convention :  `k8s-project-namespace-app Web Service Name`
 
 Let's apply that configuration in Dynatrace!
 
@@ -34,7 +35,7 @@ Let's apply that configuration in Dynatrace!
   - Select the property `"Process group tags"` and the condition `"equals"`
     - Select the tag `[Kubernetes]product` and the tag value `sockshop`
 - For the name format, we can enter free text and/or use placeholders.
-  - Placeholders are in between brackets {} to distinguish them from free text
+  - Placeholders are in between brackets { } to distinguish them from free text
   - Enter this format : 
     - `k8s-{ProcessGroup:KubernetesNamespace}.{ProcessGroup:KubernetesContainerName} {ProcessGroup:Kubernetes:canary} {Service:WebServiceName}`
 
@@ -88,37 +89,12 @@ Navigate to the <b>Transactions & Services</b> view to look at the applied custo
 
 ![service_naming_validation](../../assets/images/service_naming_validation.png)
 
-It might take a few seconds for all services to show up with the new names. If the naming doesn't change, it's probably that you forgot to save the rule... You will have to repeat the previous steps to create it again. :unamused:
+You can validate everything is in order in the <b>Transactions and Services</b> view. It might take a few seconds for all services to show up with the new names. If the naming doesn't change, it's probably that you forgot to save the rule... You will have to review the previous steps to fix your mistake. :unamused:
 
-![service_naming_rules](../../assets/images/service_naming_rules.png)
-
-Hey, wait a minute! What about the simulated `findJourneysService` that we created for EasyTravel. We can't find it anymore!
-Remember, the naming rule uses the container name; `findJourneysService` is not yet a microservice, it doesn't run in its own container but still run in the `easytravel-backend` container.
-
-What you can do *** optional **** is to create a specific service naming rule for that case.
-
-- Rule name : `EasyTravel k8s custom service names`
-- Service name format: `k8s-{Service:DetectedName}`
-- Rule applies to entities matching the following properties : Service type = "Custom Service"
-- Condition #1 : `"Kubernetes namespace"` does `"exists"`
-- Condition #2 : `"Process group tags"` does `"equals"` tag name `[Kubernetes]product` with tag value `easytravel`
-- Click Preview
-- <u>DO NOT FORGET TO SAVE!!!</u>
-
-![easytravel-custom-service-detection-rule2](../../assets/images/easytravel-custom-service-detection-rule2.png)
-
-Now, because you created that latest rule after the others, it will show up at the bottom of the list.
-
-- Service Naming Rules are applied in descending order, meaning a rule above another has precedence.
-- Because the rule you created for the Custom Service (findJourneyService) is more specific, you want it applied before the other more generic EasyTravel naming rule. 
-- Use the arrow to move up and down the rules.
-
-![service-naming-rules](../../assets/images/service-naming-rules.png)
-
-You can validate everything is in order in the <b>Transactions and Services</b> view.
+&nbsp;
 
 ---
 
-[Previous : #4 Customize Process Group naming rules for k8s](../04_Customize_PG_naming_rules) :arrow_backward: :arrow_forward: [Next : #6 Create Management Zones by application](../06_Management_Zones_by_application)
+[Previous : #2 Import Kubernetes Labels and Annotations](../02_Import_k8s_labels_annotations/README.md) :arrow_backward: :arrow_forward: [Next : #4 : Play with Management Zones](../04_Play_with_Management_Zones/README.md)
 
 :arrow_up_small: [Back to overview](../README.md)

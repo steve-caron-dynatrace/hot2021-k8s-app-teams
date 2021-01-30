@@ -16,7 +16,7 @@ Each of you have access to two environments that you will use for the workshop e
 
 #### Bastion Host
 
-You don't need to be a shell jockey or a vi expert to complete this class. Unless you run into issues, all you will need is located in a single directory. Once you open the terminal, run the execute the following command to move to that directory ($ character is only an indicator of a shell command, it's not part of the command itself):
+You don't need to be a shell jockey or a vi expert to complete this class. Unless you run into issues, all you will need is located in a single directory. Once you open the terminal, execute the following command to move to that directory ($ character is only an indicator of a shell command, it's not part of the command itself):
 
 ```sh
 $ cd dynatrace-k8s/exercises
@@ -28,7 +28,23 @@ Shell scripts (.sh files), Kubernetes manifests (.yaml/.yml files) and Dynatrace
 
 ### Your very own Dynatrace dashboard
 
-Log in your Dynatrace tenant. You will access a customized dashboard that you will use during the class.
+You will create a dashboard for yourself that will be used throughout this workshop.
+
+- Log in your Dynatrace tenant. 
+- At the top of the left menu, click on <b>Dashboards</b>. A list of preset dashboards will be displayed.
+- For the dashboard named `Dynatrace workshop dashboard template`, click on the ellipsis (<b>...</b>) button and then <b>Clone</b>.
+
+![dashboards](../../assets/images/dashboards.png)
+
+This makes a copy of the dashboard template that is your own and that you can edit.
+
+- Next the to dashboard title `Dynatrace workshop dashboard template - cloned`, click the edit (pencil) icon.
+- Enter a new title of your choice <b>(1)</b>, for example `My very own dashboard`.
+- Click on the check mark to confirm the change <b>(2)</b>.
+- Click on the star icon to add the dashboard to your favorites <b>(3)</b>
+- Click on the <b>Done</b> button to save your changes <b>(4)</b>.
+
+![your-very-own-dashboard-1](../../assets/images/your-very-own-dashboard-1.png)
 
 The dashboard also contains the following information:
 
