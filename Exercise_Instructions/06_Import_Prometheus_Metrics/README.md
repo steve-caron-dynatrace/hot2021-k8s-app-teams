@@ -162,6 +162,6 @@ We will define a custom <b>Anomaly Detection</b> rule for your metric, using a f
 
 ---
 
-[Previous : #5 : Set up Alerting Profiles](../05_Set_up_Alerting_Profiles/README.md) :arrow_backward: :arrow_forward: [Next : #7 : Detect Problems](../07_Detect_Problems/README.md)
+[Previous : #5 : Set up Alerting Profiles](../05_Set_up_Alerting_Profiles/README.md) :arrow_backward: :arrow_forward: [Next : #7 : Detect Performance Problems](../07_Detect_Problems/README.md)
 
 :arrow_up_small: [Back to overview](../README.md)

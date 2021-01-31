@@ -11,7 +11,7 @@
 ### [#4 : Play with Management Zones](04_Play_with_Management_Zones/README.md)
 ### [#5 : Set up Alerting Profiles](05_Set_up_Alerting_Profiles/README.md)
 ### [#6 : Import Prometheus Metrics](06_Import_Prometheus_Metrics/README.md)
-### [#7 : Detect Problems](07_Detect_Problems/README.md)
+### [#7 : Detect Performance Problems](07_Detect_Problems/README.md)
 ### [#8 : Deploy a Canary](08_Deploy_a_Canary/README.md)
 ### [#9 : Manage your Workload Resource Usage](09_Manage_Workload_Resource_Usage/README.md)
 

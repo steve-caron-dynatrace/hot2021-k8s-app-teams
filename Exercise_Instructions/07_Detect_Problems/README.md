@@ -1,4 +1,4 @@
-## Exercise #07 Problem detection
+## Exercise #07 Performance problem detection
 
 ## Meanwhile...
 
