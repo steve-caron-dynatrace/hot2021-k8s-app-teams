@@ -2,7 +2,9 @@
 
 ## Meanwhile...
 
-<u>Scenario</u>: Projects are moving fast within the company.
+### Scenario
+
+Projects are moving fast within the company.
 
 The Sock Shop product management has been planning a revamp of the shopping cart technology. The line of business has been promoting this project internally, which caught executive eyeballs. So much that the new <b>carts</b> service development was fast-tracked and there is a huge pressure to push it in production.
 
