@@ -7,7 +7,7 @@
 The Sock Shop product management has been planning a revamp of the shopping cart technology. The line of business has been promoting this project internally, which caught executive eyeballs. So much that the new <b>carts</b> service development was fast-tracked and there is a huge pressure to push it in production.
 
 The day for the release of the new <b>carts</b> service is coming soon, everyone's excited... :partying_face:
-... except the dev team who is concerned by the quality, as there was no time test properly. :cold_sweat: 
+... except the dev team who is concerned by the quality of the release, as there was no time test properly. :cold_sweat: 
 
 But you managed to win your point and negociate a bit of time to do some testing! 
 
@@ -23,8 +23,6 @@ Will that make a difference? Well, now that you have Dynatrace, let's see how it
 
 
 ### Deploy new carts build in dev
-
-Also, in parallel, there are changes coming again to the <b>carts</b> services. The dev team is working on some new feature for marketing.
 
 In the web terminal (make sure you are in the `exercises` directory), execute the following command to deploy the new <b>carts</b> build in dev:
 
@@ -57,7 +55,13 @@ Problem tickets provides you the entire context of the issue, including impact a
 
 ![carts-dev-problem-ticket](../../assets/images/carts-dev-problem-ticket.png)
 
-In the <b>Root cause</b> analysis section, for the `k8s-sockshop-dev.carts ItemsController</b> service, click on the <b>Analyze response time degration<b>.
+In the <b>Root cause</b> analysis section, for the `k8s-sockshop-dev.carts ItemsController</b> service, click on the <b>Analyze response time degration</b>.
+
+<ins>NOTE</ins> Depending on when you clicked on the <b>Problem</b> ticket, you may or may not see a <b>Root cause</b>. This is because problems are <i>evolving</i> over time. The DAVIS AI first detects an anomaly and create the <b>Problem ticket</b>. Then it continuously analyze the events related to the evolution of the problem and then provide a <b>root cause</b> identification. 
+
+Sometimes, the root cause might even change, events or entities added, as DAVID continues its analysis (you can see the number of dependencies analyzed on the top right under the DAVIS logo). It is even possible that two initially distinct problem tickets are merged if DAVIS discovers they have the same root cause.
+
+So, essentially, if you didn't have a root cause, wait a bit and refresh your screen, you will eventually get one.
 
 ![carts-dev-response-time-hotspots](../../assets/images/carts-dev-response-time-hotspots.png)
 
@@ -65,11 +69,11 @@ This view shows provides you an analysis of how and where the service response t
 
 We can see it is not during interaction with other services or queues, neither it is spent on database calls. The time is spent inside the service, in <b>Active wait time</b> <b>(1)</b>.
 
-OK, so what? What should I tell my devs to do. I've got the CIO breathing down my neck; that's got to be fixed quickly.
+OK, so what? What should I tell my devs to do? I've got the CIO breathing down my neck; that's got to be fixed quickly.
 
 Well, Dynatrace can lead you deeper, down to code-level. Click on <b>View method hotspots</b>. <b>(2)</b>
 
-[carts-dev-method-hotspots](../../assets/images/carts-dev-method-hotspots.png)
+![carts-dev-method-hotspots](../../assets/images/carts-dev-method-hotspots.png)
 
 This view shows how much time the `ItemsController` service spent executing its own code.
 
@@ -91,6 +95,6 @@ Eventually, you will receive an email notifying you that the problem is resolved
 
 ---
 
-[Previous : #9 Configure k8s cluster monitoring integration](../09_Configure_k8s_cluster_monitoring_integration) :arrow_backward: 
+[Previous : #6 : Import Prometheus Metrics](../06_Import_Prometheus_Metrics/README.md) :arrow_backward: :arrow_forward: [Next : #8 : Deploy a Canary](../08_Deploy_a_Canary/README.md)
 
 :arrow_up_small: [Back to overview](../README.md)
