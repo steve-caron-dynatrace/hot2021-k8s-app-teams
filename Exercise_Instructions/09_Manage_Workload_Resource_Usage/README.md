@@ -1,18 +1,18 @@
 ## Exercise #10 Managing your workload resource usage
 
-### There ain't such things as a free lunch 
+### There ain't such thing as a free lunch 
 
-It's not because you are running your workload on such a hot and sophisticated platform such as Kubernetes that the laws of nature are not applied.
+It's not because you are running your workload on such a hot and sophisticated platform as Kubernetes that the laws of nature are not applied.
 
 The Kubernetes platform is built on a number of virtualization and abstraction layers but at the bottom, there are still good old bare-metals machines, whether they are hosted by your company, in a co-location data center or managed by a public cloud service provider.
 
-The point here is that you still need to be conscious of the resources that your workload is using. Because the Kubernetes is a platform running on shared infrastructure, how much resource you use might affect the other applications running on the same cluster.
+The point here is that you still need to be conscious of the resources that your workload is using. Because Kubernetes is a platform running on shared infrastructure, how much resources you use might affect the other applications running on the same cluster.
 
 This is why the Kubernetes platform administrators will typically set resource quotas that will be granted to your project (namespace). As an application team, it is your responsibility to assign the given resources to your different microservices.
 
 ### If memory serves
 
-The <b>Hipster Shop</b> team has just deployed a new release of the `paymentservice`, which is developed in nodeJS  . As you can imagine, this is an <i>important</i> service for the line of business. :smirk:  
+The <b>Hipster Shop</b> team has just deployed a new release of the `paymentservice`, which is developed in nodejs. As you can imagine, this is an <ins>important</ins> service for the line of business. :smirk:  
 
 In the web terminal (make sure you are in the `exercises` directory), execute:
 
@@ -21,7 +21,7 @@ $ kubectl apply -f ../hipstershop/paymentservice-new.yaml
 ```
 In the mean time, we'll look at how Kubernetes workload resource management works.
 
-Keep an eye on your Dynatrace console... you never know what could happen.
+Keep an eye on your Dynatrace console... you never know what could happen. :monocle_face:
 
 At some point, both the Hipster Shop and the k8s infra teams received an alert from Dynatrace. Let's take a look at it.
 
@@ -35,14 +35,14 @@ The container from the new `paymentservice` pod has been OOMKilled. This means i
 
 This means its memory usage went above its configured limit (which is 128Mi). The thing is, before today, you never had any OOMKilled problem with `paymentservice`. 
 
-So it's got something to do with the new build. Either:
+So it has something to do with the new build. Either:
 
 - The new build now requires more memory to be able to work properly. In that case you need to increase the memory limit for the container... and potentially negociate higher resource quota with the Kubernetes platform ops team.
   - Test with multiple limit values and monitor the container memory consumption with Dynatrace (<b>Container</b> view or build a custom dashboard)
-- The new build has a memory leak, which over time make it consume memory above the limit.
-  - If that is the case, whatever increase in memory limit will eventually be breached. You would just be buying time, the code itself need to be fixed.
-  - Test under different conditions and monitor nodeJS metrics (in the <b>Process</b> view). Make code corrections and test again. Wash-rinse-repeat.
-  - Dynatrace can also help you by collecting nodeJS V8 engine memory dumps on demand for analysis. This is beyond the scope of this workshop but if you are interested, you can find more information [here](https://www.dynatrace.com/support/help/shortlink/memory-dumps).
+- The new build has a memory leak, which over time makes it consume memory above the limit.
+  - If that is the case, whatever the increase in memory limit, it will eventually be breached. You would just be buying time, the code itself needs to be fixed.
+  - Test under different conditions and monitor nodejs metrics (in the <b>Process</b> view). Dynatrace will provide you all the metrics you need. Make code corrections and test again. Wash-rinse-repeat. :upside_down_face:
+  - Dynatrace can also help you further by collecting nodeJS V8 engine memory dumps on demand for analysis. This is beyond the scope of this workshop but if you are interested, you can find more information [here](https://www.dynatrace.com/support/help/shortlink/memory-dumps).
 
 ![hipstershop-paymentservice-oomkill-nodejs-memory](../../assets/images/hipstershop-paymentservice-oomkill-nodejs-memory.png)  
 
@@ -76,9 +76,13 @@ And if you look to the Kubernetes cluster events (in the previous screen), you w
 
 As you can see, the pod is in pending state because the new container image specified in the deployment manifest could not be pulled from the container image registry. You can see the image tag in the message : `paymentservice:999999-image-tag-not-on-the-registry`. A quick look at the registry and indeed, it's never been pushed there.
 
-You might say, how can this happen? Images are automatically built and and pushed to registry by our CI/CD pipelines. Well, there is a thing such as "Murphy's Law". Whatever can potentially go wrong will eventually go wrong.
+You might say, how can this happen? Images are automatically built and pushed to the registry by our CI/CD pipelines. Well, there is a thing such as "Murphy's Law". Whatever can potentially go wrong will eventually go wrong.
+
+&nbsp;
 
 ![keep-calm-murphy](../../assets/images/keep-calm-murphy.jpg)
+
+&nbsp;
 
 But this does not mean your already difficult day needs to be more miserable. Once again, Dynatrace quickly spotted the issue and gave you the info you need to fix it!
 
@@ -94,7 +98,7 @@ The open problem in Dynatrace will automatically close itself.
 
 We haven't talked much about EasyTravel but their dev team have been busy, trying to break down that big ball of mud into microservices.
 
-There's new build for the `easytravel-backend` pod available, so we'll deploy it.
+There's a new build for the `easytravel-backend` pod available, so we'll deploy it.
 
 In the web terminal, execute:
 
@@ -104,7 +108,7 @@ $ ./toggle-easytravel-resources-scenario-1.sh
 
 At the prompt, enter `1` to enable the scenario.
 
-You receive a call from the k8s infra team. They have a problem with the cluster and it's the fault of EasyTravel! 
+You leave your computer for a quick snack. You receive a call from the k8s infra team. They have a problem with the cluster and it's the fault of EasyTravel! 
 
 They sent you a few screenshots. You can do the navigation yourself if you want.
 
@@ -128,9 +132,13 @@ But what is causing that saturation? Click on <b>Consuming processes</b> to have
 
 ![easytravel-cpu-saturation-host-processes](../../assets/images/easytravel-cpu-saturation-host-processes.png)
 
+&nbsp;
+
 Looks like the culprit is easytravel backend Java process, which is consuming 88% of the host CPU... :unamused:
 
 You can also see that in the <b>Workloads</b> view : <b>Menu -> Kubernetes -> Namespaces -> easytravel</b>
+
+&nbsp;
 
 ![easytravel-cpu-saturation-workloads](../../assets/images/easytravel-cpu-saturation-workloads.png)
 
@@ -151,7 +159,7 @@ And you will also bounce the `easytravel-backend` pod so it picks up on this new
 kubectl delete po -l app=easytravel-backend -n easytravel
 ```
 
-So all is good now...
+Assuming all will be good from now on...
 
 So our problem here is that our EasyTravel pods don't have resource requests and limits. With resource quota now imposed on the namespace, any pod that don't have CPU and Memory requests and limits configured will not be scheduled to be deployed on any of the cluster node. This is the Kubernetes cluster protecting itself. Those k8s platform admins! :angry:
 
@@ -165,15 +173,16 @@ Good thing that have a <b>Synthetic Monitor</b> set up to detect this before too
 
 In order to set the proper requests and limits you need to understand the usage of your workload. How? Well, remember Dynatrace is capturing all those metrics. So you just need to analyze those over time in under different load patterns.
 
-But for now, you need EasyTravel back up and running asap. So you will use a <i>Limit Range</b> definition for the `easytravel` namespace. What it does is define default CPU and Memory requests and limits for deployments that don't have those request/limits specifically configured in each of their definition.
+But for now, you need EasyTravel back up and running asap. So you will use a <i>Limit Range</i> definition for the `easytravel` namespace. What it does is define default CPU and Memory requests and limits for deployments that don't have those request/limits specifically configured in each of their definition.
 
 In the web terminal, execute:
 
 ```sh
-$ kubectl apply -f ../easytravel/limitrange.yaml 
+$ kubectl apply -f ../easytravel/compute-limitrange.yaml
+$ kubectl delete rs -l app=easytravel-backend -n easytravel
 $ kubectl get po -n easytravel -w
 ```
-The last command will display the pods and watch for updates. You should see the `easytravel-backend` pod back. Press `Ctrl-c` to exit.
+To make things faster, we're deleting the replicaset to force a new one and precede the pod scheduling. Also, the last command will display the pods and watch for updates. You should see the `easytravel-backend` pod back on. Press `Ctrl-c` to exit.
 
 ### Such a perfect day
 
@@ -192,7 +201,7 @@ What more?
 
 ![easytravel-cpu-throttle-container](../../assets/images/easytravel-cpu-throttle-container.png)
 
-You can see the `easytravel-backend` is being heavily CPU throttled!!! What this means is that it is trying to consume way more CPU than its configured limit (which is provided by the namespace <b>LimitRange</b> in this case). And Kubernetes is throttling (limiting) this container CPU consumption which has a cascading slow down impact on the code execution of the Java process running in the container.
+You can see the `easytravel-backend` is being heavily CPU throttled!!! What this means is that it is trying to consume way more CPU than its configured limit (which is provided by the namespace <b>LimitRange</b> in this case). And Kubernetes is throttling (limiting) this container CPU consumption which has a cascading slowdown impact on the code execution of the Java process running in the container.
 
 To give you a perspective of how high is the throttling, here is a view of the CPU throttling for all the workloads in the `easytravel` namespace. You see the difference?
 
@@ -209,12 +218,12 @@ You learned the hard way the importance of resource management in Kubernetes. Th
 
 You need to get a solid and accurate picture of your workload resource consumption in order to figure out what requests and limits you have to set for your different services. 
 
-Also, the k8s infra ops team will always give you only the amount of resources you need. It is their responsiblity to make sure the platform stays healthy for everyone using it. So in the case you need more resource, you have to enter into a negociation with the platform team. And as with any negociation, it's always better if you come at the table with as much information you can get. 
+Also, the k8s infra ops team will always give you only the amount of resources you need. It is their responsiblity to make sure the platform stays healthy for everyone using it. So in the case you need more resources, you have to enter into a negociation with the platform team. And as with any negociation, it's always better if you come at the table with as much information you can get. 
 
 And you can count on Dynatrace for that!
 
 ---
 
-[Previous : #9 Configure k8s cluster monitoring integration](../09_Configure_k8s_cluster_monitoring_integration) :arrow_backward: 
+[Previous : #8 : Deploy a Canary](../08_Deploy_a_Canary/README.md) :arrow_backward: 
 
 :arrow_up_small: [Back to overview](../README.md)
