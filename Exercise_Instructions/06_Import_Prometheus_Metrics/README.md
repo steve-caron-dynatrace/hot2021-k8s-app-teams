@@ -1,8 +1,8 @@
-## Exercise #8 Import Prometheus Metrics
+## Exercise #6 Import Prometheus Metrics
 
 ### Context
 
-Our Sock Shop, EasyTravel and HipsterShop applications are using supporting technologies, such as Nginx, Redis, RabbitMQ, MySQL and MongoDB, for which you need additional insights in terms of metrics.
+Our Sock Shop, EasyTravel and HipsterShop applications are using 3rd-party technologies, such as Nginx, Redis, RabbitMQ, MySQL and MongoDB, for which you need additional insights in terms of metrics.
 
 Your researches found that metrics for those technologies, and many more, are available in Prometheus metrics format. So that seems a nice solution. There's a few drawbacks with that though: 
 
@@ -22,7 +22,7 @@ We will use the containerized version of the Percona MongoDB Prometheus exporter
 
 The image we will use is available on Docker Hub here: https://hub.docker.com/r/ssheehy/mongodb-exporter 
 
-To scrape metrics from this exporter, Dynatrace uses a software component called an ActiveGate. Historically, ActiveGate have been deployed on Linux or Windows machines, which means you would need extra infrastructure outside of your Kubernetes cluster... :unamused: 
+To scrape metrics from this exporter, Dynatrace uses a software component called an <i>ActiveGate</i>. Those of you already familiar with Dynatrace might know that, typically, <b>ActiveGates</b> are deployed on Linux or Windows machines, which means you would need extra infrastructure outside of your Kubernetes cluster... :unamused: 
 
 But this is no longer necessary! :metal: You can now deploy an ActiveGate that will run in its own pod in Kubernetes. Actually, your cluster already have one deployed. Let's take a quick look.
 
@@ -33,19 +33,21 @@ But this is no longer necessary! :metal: You can now deploy an ActiveGate that w
 
 This pod is not only able to scrape Prometheus metrics, it runs the Kubernetes API extension that collects the cluster and workload events and metrics populating the <b>Kubernetes</b> view! 
 
-So we have an ActiveGate, now we need the exporter.
+So we have an <b>ActiveGate</b>, now we need the exporter.
 
-The MongoDB exporter can be deployed in different manners. It can be deployed via <i>Helm chart</i> and run in its own pod. It can also run as a sidecar container in the MongoDB pod. That's how we will deploy it.
+The MongoDB exporter can be deployed in different manners. It can be deployed via <i>Helm chart</i> and run in its own pod. It can also run as a <i>sidecar container</i> in the MongoDB pod. That's how we will deploy it.
 
 If you have not already, load the class Github repo in your browser: https://github.com/steve-caron-dynatrace/dynatrace-k8s 
 
 Browse to the `sockshop/manifests/scenarios`, and click on `carts-db-with-prometheus-exporter.yml`
 
-In the pod template definition, you can see there are 2 containers defined. One for the MongoDb instance and another one for the exporter.
+In the pod template definition, you can see there are 2 containers defined. One for the MongoDB instance and another one for the exporter.
 
 ![mongodb-pod-template-containers](../../assets/images/mongodb-pod-template-containers.png)
 
-Having the sidecar container is not sufficent. We must have the pod specifically annotated to tell the Dynatrace ActiveGate to scrape the metrics from its endpoint.
+&nbsp;
+
+Having the sidecar container is not sufficent. We must have the pod specifically annotated to tell the <b>Dynatrace ActiveGate</b> to scrape the metrics from its exposed endpoint.
 
 ![mongodb-pod-template-annotations](../../assets/images/mongodb-pod-template-annotations.png)
 
@@ -67,7 +69,7 @@ Hit `ctrl-c` to exit the command
 
 ![carts-db-pods](../../assets/images/carts-db-pods.png)
 
-We see the dev pod has 2 containers, which corresponds to what is now expected. The pod port has an additional container, we will see why later on.
+We see the dev pod has 2 containers, which corresponds to what is now expected. The production pod has an additional container, we will see why later on.
 
 You will have to wait one or two minutes and then, in the Dynatrace console:
 
@@ -89,17 +91,77 @@ You will have to wait one or two minutes and then, in the Dynatrace console:
     - `Cloud application namespace` <b>(2)</b>
   - In the <b>Filter by</b> box, select: `type: write` <b>(3)</b>
     - The dimension `type` is a <i>Prometheus Label</i> (dimensions are called <i>labels</i> in Prometheus)
-    - Selecting write will display the write operations latencies
+    - Selecting `write` will display the write operations latencies
   - Click on <b>Run query</b> <b>(4)</b>
-- You can play with the chart mode <b>(5)</b> and the type of visualization
-- <b>(6)</b> Once done, <b>Pin to dashboard</b>, select your very own personal dashboard, give a name to the chart : `carts-db write latencies`
+
+&nbsp;
 
 ![mongodb-metric-chart](../../assets/images/mongodb-metric-chart.png)
 
-### Alerting rule?
+&nbsp;
+
+- You can play with the chart mode <b>(5)</b> and the type of visualization
+- <b>(6)</b> Once done, <b>Pin to dashboard</b>, select your very own personal dashboard, give a name to the chart : `carts-db write latencies`
+
+![pin-to-dashboard-2](../../assets/images/pin-to-dashboard-2.png)
+
+- Click <b>Open Dashboard</b>
+
+We are going to make a few cosmetic changes.
+
+- Click the <b>Edit</b> button
+- Drag a <b>Header</b> tile (from the toolbox at the right) and place it under the <b>Application Logins</b> tile.
+- We will put a descriptive text in the header, such as `carts-db metrics`. Don't forget to click on the check mark.
+- Resize the tile so it has the same width as the tile above.
+- Drag the `carts-db write latencies` tile you just imported under the header tile and resize it.
+- The result should roughly look like this:
+
+&nbsp;
+
+![your-very-own-dashboard-3](../../assets/images/your-very-own-dashboard-3.png)
+
+&nbsp;
+
+- DON'T FORGET to click the <b>Done</b> button once you're happy with the result.
+
+&nbsp;
+
+### How to get custom alerts based on that metric?
+
+Now you have access to MongoDB Prometheus metrics in Dynatrace. Even though they come from a 3rd party, those metrics are now first class citizens in Dynatrace. We have already seen that you can visualize those metrics in charts and dashboards all the same as Dynatrace-native metrics.
+
+But, of course, you don't want to spend your days looking at dashboards. What you want is to be notified if there's an anomaly related to the metrics you are capturing.
+
+We will define a custom <b>Anomaly Detection</b> rule for your metric, using a fixed threshold. DAVIS, the Dynatrace AI, can automatically baseline the metric but in the context of this workshop, it will be easier to obtain an alert if we used a fixed threshold. Also, not all metrics lend well to auto-baselining; it depends on the metric variation pattern.
+
+- Go to <b>Menu -> Settings -> Anomaly Detection -> Custom events for alerting</b>
+- Click on <b>Create custom event for alerting</b>
+- In the metric drop-down box, enter (copy-paste): `mongodb_mongod_op_latencies_latency_total`
+- Specify the following dimensions and values:
+  - Cloud application namespace : `sockshop-dev`
+  - type : `write`
+
+&nbsp;
+
+![carts-db-anomaly-detection-rule-1](../../assets/images/carts-db-anomaly-detection-rule-1.png)
+
+&nbsp;
+
+- In the <b>Monitoring strategy section</b>, select `Static threshold`
+- Enter static threshold of `1000000` or a lower value.
+- Raise alert if the metric is `above` the threshold for `1` minutes during any `3` minute period.
+
+&nbsp;
+![carts-db-anomaly-detection-rule-2](../../assets/images/carts-db-anomaly-detection-rule-2.png)
+&nbsp;
+
+- In the <b>Event description</b> section, enter a title: `mongodb write op latencies`
+- Change the severity to `Resource`
+- In the message text box, you can enter free text and properties using brackets { }.
+  - Enter: `The {metricname} {dims:type} value of was {alert_condition} your custom threshold of {threshold}.` 
 
 ---
 
-:arrow_forward: [Next : #2 Deploy the OneAgent Operator](../02_Deploy_OneAgent_Operator)
+[Previous : #5 : Set up Alerting Profiles](../05_Set_up_Alerting_Profiles/README.md) :arrow_backward: :arrow_forward: [Next : #7 : Detect Problems](../07_Detect_Problems/README.md)
 
 :arrow_up_small: [Back to overview](../README.md)
