@@ -1,4 +1,4 @@
-## Exercise #09 Problem detection
+## Exercise #07 Problem detection
 
 ## Meanwhile...
 
@@ -14,13 +14,6 @@ But you managed to win your point and negociate a bit of time to do some testing
 ![wew](../../assets/images/not-test-in-production.jpg)
 
 Will that make a difference? Well, now that you have Dynatrace, let's see how it can help!
-
-
-
-
-
-
-
 
 ### Deploy new carts build in dev
 
@@ -59,13 +52,13 @@ In the <b>Root cause</b> analysis section, for the `k8s-sockshop-dev.carts Items
 
 <ins>NOTE</ins> Depending on when you clicked on the <b>Problem</b> ticket, you may or may not see a <b>Root cause</b>. This is because problems are <i>evolving</i> over time. The DAVIS AI first detects an anomaly and create the <b>Problem ticket</b>. Then it continuously analyze the events related to the evolution of the problem and then provide a <b>root cause</b> identification. 
 
-Sometimes, the root cause might even change, events or entities added, as DAVID continues its analysis (you can see the number of dependencies analyzed on the top right under the DAVIS logo). It is even possible that two initially distinct problem tickets are merged if DAVIS discovers they have the same root cause.
+Sometimes, the root cause might even change, events or entities added, as DAVIS continues its analysis (you can see the number of dependencies analyzed on the top right under the DAVIS logo). It is even possible that two initially distinct problem tickets are merged if DAVIS discovers they have the same root cause.
 
 So, essentially, if you didn't have a root cause, wait a bit and refresh your screen, you will eventually get one.
 
 ![carts-dev-response-time-hotspots](../../assets/images/carts-dev-response-time-hotspots.png)
 
-This view shows provides you an analysis of how and where the service response time is degrading.
+This view provides you an analysis of how and where the service response time is degrading.
 
 We can see it is not during interaction with other services or queues, neither it is spent on database calls. The time is spent inside the service, in <b>Active wait time</b> <b>(1)</b>.
 
@@ -83,7 +76,7 @@ This view shows how much time the `ItemsController` service spent executing its 
 
 All right! That's actionable info your developers can use to fix their code. You could even copy-paste this page URL so your developers don't have to click around. All Dynatrace links are <i>permalinks</i>.
 
-That means this build is defective and you need to rollback to `Revision 1`
+One thing that is sure is that this build is defective and you need to rollback to `Revision 1`
 
 In the web terminal, execute:
 
