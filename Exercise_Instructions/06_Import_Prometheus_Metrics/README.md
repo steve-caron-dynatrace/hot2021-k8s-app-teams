@@ -136,9 +136,8 @@ We will define a custom <b>Anomaly Detection</b> rule for your metric, using a f
 
 - Go to <b>Menu -> Settings -> Anomaly Detection -> Custom events for alerting</b>
 - Click on <b>Create custom event for alerting</b>
-- In the metric drop-down box, enter (copy-paste): `mongodb_mongod_op_latencies_latency_total`
-- Specify the following dimensions and values:
-  - Cloud application namespace : `sockshop-dev`
+- In the metric drop-down box <b>(1)</b>, enter (copy-paste): `mongodb_mongod_op_latencies_latency_total`
+- Specify the following dimensions and values <b>(2)</b>:
   - type : `write`
 
 &nbsp;
@@ -147,18 +146,44 @@ We will define a custom <b>Anomaly Detection</b> rule for your metric, using a f
 
 &nbsp;
 
-- In the <b>Monitoring strategy section</b>, select `Static threshold`
-- Enter static threshold of `1000000` or a lower value.
-- Raise alert if the metric is `above` the threshold for `1` minutes during any `3` minute period.
+- In the <b>Entities</b> section, 
+  - Expand <b>Advanced entity settings</b>
+  - Make sure `Cloud application instance` is selected <b>(1)</b>
+  - Click <b>Add rule-based filter</b>
+    - <b>Property</b> `Name` <b>(2)</b>
+    - <b>Operator</b> `contains`<b>(3)</b>
+    - <b>Value</b> `carts-db` (type it) <b>(4)</b>
+    - Click <b>Update</b>
 
 &nbsp;
+
 ![carts-db-anomaly-detection-rule-2](../../assets/images/carts-db-anomaly-detection-rule-2.png)
+
 &nbsp;
 
-- In the <b>Event description</b> section, enter a title: `mongodb write op latencies`
-- Change the severity to `Resource`
+- In the <b>Monitoring strategy section</b>, select `Static threshold` <b>(1)</b>
+  - Use the suggested static thresold or a lower value; we want this alert to trigger within a short amount of time. <b>(2)</b>
+- Raise alert if the metric is `above` the threshold for `1` minutes during any `3` minute period. <b>(3)</b>
+
+&nbsp;
+
+![carts-db-anomaly-detection-rule-3](../../assets/images/carts-db-anomaly-detection-rule-3.png)
+
+&nbsp;
+
+- In the <b>Event description</b> section, enter a title: `mongodb write op latencies` <b>(1)</b>
+- Change the severity to `Resource` <b>(2)</b>
 - In the message text box, you can enter free text and properties using brackets { }.
-  - Enter: `The {metricname} {dims:type} value of was {alert_condition} your custom threshold of {threshold}.` 
+  - Enter: `The {metricname} {dims:type} value of was {alert_condition} your custom threshold of {threshold}.` <b>(3)</b>
+- Click on <b>Create custom event for alerting</b> <b>(4)</b>
+
+&nbsp;
+![carts-db-anomaly-detection-rule-4](../../assets/images/carts-db-anomaly-detection-rule-4.png)
+&nbsp;
+
+You're done! Now it's just a matter of time before an alert is triggered (normally within 5 to 10 minutes depending on the threshold you set).
+
+![carts-db-problem-ticket](../../assets/images/carts-db-problem-ticket.png)
 
 ---
 
