@@ -26,7 +26,7 @@ You managed to convince the Sock Shop management team to not expose the new <b>c
 
 So it is decided that, until proven to be solid, the new `carts-v2` service will only be available to non-customers (users who are not logged in). Existing customers (users logged-in) will stay on the current version of <b>carts</b>. The frontend was also cosmetically changed, depending the version of `carts` that traffic will be sent to, the header color will vary : `v1` is in grey, `v2` is in blue.
 
-Essentially, you are implementing a canary release. You are only partially exposing the new service release to a subset of the overall traffic, under specific conditions. If the release proves to work as intended, it will be eventually promoted and it will get all the traffic. Otherwise, you have quick mechanism to redirect all traffic to the current stable release while you fix the faulty one.  
+Essentially, you are implementing a canary release. You are only partially exposing the new service release to a subset of the overall traffic, under specific conditions. If the release proves to work as intended, it will eventually be promoted and it will get all the traffic. Otherwise, you have a quick mechanism to redirect all traffic to the current stable release while you fix the faulty one.  
 
 ### Let's deploy that v2!
 
@@ -55,14 +55,14 @@ In the Dynatrace console:
 - In the next view, on the top right of the screen, you will see a button with an ellipsis (...), click on it
 - Click on <b>Pin to dashboard</b>
 
-![pin-to-dashboard](../../assets/images/pin-to-dashboard.png)
+![pin-to-dashboard-3](../../assets/images/pin-to-dashboard-3.png)
 
 - Select your very own perform HOT dashboard.
-- Place the tile somewhere on the dashboard and click <b>Done</b> for the tile and <b>Done</b> once again (for the dashboard).
+- In the dashboard, you can place the tiles next to `carts-db write latencies` tile and under the `SockShop Prod services` tile
+- Add a nice header tile above it, with a title like : `Carts v1 vs v2`
+- Repeat the same steps for the new release of the service : `k8s-sockshop-production.carts v2 ItemsController`.
 
-We will repeat the same steps for the new release of the service : `k8s-sockshop-production.carts v2 ItemsController`.
-
-In the dashboard, you can place the tiles next to `carts-db write latencies` tile and under the `SockShop Prod services` tile and add a nice header tile above it. Something like this:
+In the emd, it should be something like this:
 
 ![your_very_own_dashboard-4](../../assets/images/your-very-own-dashboard-4.png)
 
