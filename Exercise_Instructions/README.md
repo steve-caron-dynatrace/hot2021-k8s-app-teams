@@ -4,6 +4,7 @@
 
 ## Workshop instructions
 
+### [#0 : Fast Track](00_Fast_Track/README.md)
 ### [#1 : Explore your Environment](01_Explore_Your_Environment/README.md)
 ### [#2 : Import Kubernetes Labels and Annotations](02_Import_k8s_labels_annotations/README.md)
 ### [#3 : Customize Service Naming](03_Customize_Service_naming/README.md)
