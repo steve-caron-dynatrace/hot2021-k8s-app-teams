@@ -28,7 +28,7 @@ The <b>carts</b> pod takes about 5 minutes to be ready.
 
 <b><u>TIME FOR A QUICK BREAK!</u></b>
 
-[keep-calm](../../assets/images/keep_calm.png)
+![keep-calm](../../assets/images/keep_calm.png)
 
 ## All is well?
 
