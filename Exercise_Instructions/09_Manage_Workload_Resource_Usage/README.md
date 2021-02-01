@@ -224,6 +224,6 @@ And you can count on Dynatrace for that!
 
 ---
 
-[Previous : #8 : Deploy a Canary](../08_Deploy_a_Canary/README.md) :arrow_backward: 
+[Previous : #8 : Import Prometheus Metrics](../08_Import_Prometheus_Metrics/README.md) :arrow_backward: 
 
 :arrow_up_small: [Back to overview](../README.md)

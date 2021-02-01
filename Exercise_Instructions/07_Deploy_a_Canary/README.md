@@ -259,6 +259,6 @@ This will put an end to the transaction failure and after some time (between 5 a
 
 ---
 
-[Previous : #7 : Detect Performance Problems](../07_Detect_Problems/README.md) :arrow_backward: :arrow_forward: [Next : #9 : Manage your Workload Resource Usage](../09_Manage_Workload_Resource_Usage/README.md)
+[Previous : #6 : Detect Performance Problems](../06_Detect_Problems/README.md) :arrow_backward: :arrow_forward: [Next : #8 : Import Prometheus Metrics](../08_Import_Prometheus_Metrics/README.md)
 
 :arrow_up_small: [Back to overview](../README.md)

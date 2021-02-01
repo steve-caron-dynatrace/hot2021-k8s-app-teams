@@ -1,4 +1,4 @@
-## Exercise #07 Performance problem detection
+## Exercise #06 Performance problem detection
 
 ## Meanwhile...
 
@@ -13,7 +13,7 @@ The day for the release of the new <b>carts</b> service is coming soon, everyone
 
 But you managed to win your point and negociate a bit of time to do some testing! 
 
-![wew](../../assets/images/not-test-in-production.jpg)
+![one-does-not-simply-test-in-prod](../../assets/images/one-does-not-simply-test-in-prod.jpg)
 
 Will that make a difference? Well, now that you have Dynatrace, let's see how it can help!
 
@@ -27,7 +27,6 @@ $ kubectl apply -f ../sockshop/manifests/scenarios/carts-dev-new-build.yml
 The <b>carts</b> pod takes about 5 minutes to be ready.
 
 <b><u>TIME FOR A QUICK BREAK!</u></b>
-
 
 ## All is well?
 
@@ -90,6 +89,6 @@ Eventually, you will receive an email notifying you that the problem is resolved
 
 ---
 
-[Previous : #6 : Import Prometheus Metrics](../06_Import_Prometheus_Metrics/README.md) :arrow_backward: :arrow_forward: [Next : #8 : Deploy a Canary](../08_Deploy_a_Canary/README.md)
+[Previous : #5 : Set up Alerting Profiles](../05_Set_up_Alerting_Profiles/README.md) :arrow_backward: :arrow_forward: [Next : #7 : Deploy a Canary](../07_Deploy_a_Canary/README.md)
 
 :arrow_up_small: [Back to overview](../README.md)

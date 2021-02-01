@@ -58,7 +58,21 @@ The dashboard also contains the following information:
 
 ### HaveFunCompany applications
 
+#### EasyTravel
 
+EasyTravel has been HaveFun Company flagship application for a long time but it is now due for an overhaul in order for it to stay competitive. It evolved from a monolith app to a 3-tiers app (frontend-backend/app-server/database) and later a tentative migration to SOA, which was never fully achieved. 
+
+The lastest decisions have been to progressively re-architecture it to microservices. The first step was to lift and shift it to containers and run it in our Kubernetes cluster.
+
+Play around! You can run some tramsactions from the browser (click on the link from `your very own dashboard`). 
+
+![easytravel-screen1](../../assets/images/easytravel-screen1.png)
+![easytravel-screen2](../../assets/images/easytravel-screen2.png)
+![easytravel-screen3](../../assets/images/easytravel-screen3.png)
+![easytravel-screen4](../../assets/images/easytravel-screen4.png)
+![easytravel-screen5](../../assets/images/easytravel-screen5.png)
+
+&nbsp;
 
 #### Sock Shop
 
@@ -98,6 +112,6 @@ You can manually register a new account or log in with one that was created duri
 
 ---
 
-[Previous : Initial setup tasks](../00_Setup/README.md) :arrow_backward: :arrow_forward: [Next : #2 Import Kubernetes Labels and Annotations](../02_Import_k8s_labels_annotations/README.md)
+ :arrow_forward: [Next : #2 Import Kubernetes Labels and Annotations](../02_Import_k8s_labels_annotations/README.md)
 
 :arrow_up_small: [Back to overview](../README.md)

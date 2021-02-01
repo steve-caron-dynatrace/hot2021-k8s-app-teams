@@ -187,6 +187,6 @@ You're done! Now it's just a matter of time before an alert is triggered (normal
 
 ---
 
-[Previous : #5 : Set up Alerting Profiles](../05_Set_up_Alerting_Profiles/README.md) :arrow_backward: :arrow_forward: [Next : #7 : Detect Performance Problems](../07_Detect_Problems/README.md)
+[Previous : #7 : Deploy a Canary](../07_Deploy_a_Canary/README.md) :arrow_backward: :arrow_forward: [Next : #9 : Manage your Workload Resource Usage](../09_Manage_Workload_Resource_Usage/README.md)
 
 :arrow_up_small: [Back to overview](../README.md)
