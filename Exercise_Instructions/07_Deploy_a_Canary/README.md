@@ -1,4 +1,4 @@
-## Exercise #8 Canary Deployment
+## Exercise #7 Canary Deployment
 
 ### A Comedy of Errors
 

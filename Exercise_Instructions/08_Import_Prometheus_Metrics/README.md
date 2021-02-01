@@ -1,4 +1,4 @@
-## Exercise #6 Import Prometheus Metrics
+## Exercise #8 Import Prometheus Metrics
 
 ### Context
 

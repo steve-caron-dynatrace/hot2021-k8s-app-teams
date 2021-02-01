@@ -1,4 +1,4 @@
-## Exercise #10 Managing your workload resource usage
+## Exercise #9 Managing your workload resource usage
 
 ### There ain't such thing as a free lunch 
 
