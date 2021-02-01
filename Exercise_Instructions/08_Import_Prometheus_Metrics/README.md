@@ -146,21 +146,6 @@ We will define a custom <b>Anomaly Detection</b> rule for your metric, using a f
 
 &nbsp;
 
-- In the <b>Entities</b> section, 
-  - Expand <b>Advanced entity settings</b>
-  - Make sure `Cloud application instance` is selected <b>(1)</b>
-  - Click <b>Add rule-based filter</b>
-    - <b>Property</b> `Name` <b>(2)</b>
-    - <b>Operator</b> `contains`<b>(3)</b>
-    - <b>Value</b> `carts-db` (type it) <b>(4)</b>
-    - Click <b>Update</b>
-
-&nbsp;
-
-![carts-db-anomaly-detection-rule-2](../../assets/images/carts-db-anomaly-detection-rule-2.png)
-
-&nbsp;
-
 - In the <b>Monitoring strategy section</b>, select `Static threshold` <b>(1)</b>
   - Use the suggested static thresold or a lower value; we want this alert to trigger within a short amount of time. <b>(2)</b>
 - Raise alert if the metric is `above` the threshold for `1` minutes during any `3` minute period. <b>(3)</b>

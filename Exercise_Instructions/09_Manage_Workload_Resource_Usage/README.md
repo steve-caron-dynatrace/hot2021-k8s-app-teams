@@ -156,10 +156,12 @@ $ kubectl apply -f  ../easytravel/compute-resources-quota.yaml
 And you will also bounce the `easytravel-backend` pod so it picks up on this new resource quota.
 
 ```sh
-kubectl delete po -l app=easytravel-backend -n easytravel
+$ kubectl delete po -l app=easytravel-backend -n easytravel
 ```
 
-Assuming all will be good from now on...
+Assuming all will be good from now on... but no
+
+Other problems are detected by Dynatrace.
 
 So our problem here is that our EasyTravel pods don't have resource requests and limits. With resource quota now imposed on the namespace, any pod that don't have CPU and Memory requests and limits configured will not be scheduled to be deployed on any of the cluster node. This is the Kubernetes cluster protecting itself. Those k8s platform admins! :angry:
 

@@ -28,6 +28,8 @@ The <b>carts</b> pod takes about 5 minutes to be ready.
 
 <b><u>TIME FOR A QUICK BREAK!</u></b>
 
+[keep-calm](../../assets/images/keep_calm.png)
+
 ## All is well?
 
 <u>Keep an eye on your email inbox for the next few minutes</u>. You should receive something from the "Dynatrace team".
@@ -45,7 +47,7 @@ Also, you can go in the Menu -> <b>Problems</b>. You will see a turquoise header
 
 You will get to the <b>Problem ticket</b> produced by the Dynatrace DAVIS AI.
 
-Problem tickets provides you the entire context of the issue, including impact and root causing pinpointing what needs to be done to solve it.
+Problem tickets provides you the entire context of the issue, including impact and root cause pinpointing what needs to be done to solve it.
 
 ![carts-dev-problem-ticket](../../assets/images/carts-dev-problem-ticket.png)
 

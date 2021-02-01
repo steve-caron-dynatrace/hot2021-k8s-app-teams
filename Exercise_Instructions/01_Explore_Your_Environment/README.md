@@ -62,9 +62,9 @@ The dashboard also contains the following information:
 
 EasyTravel has been HaveFun Company flagship application for a long time but it is now due for an overhaul in order for it to stay competitive. It evolved from a monolith app to a 3-tiers app (frontend-backend/app-server/database) and later a tentative migration to SOA, which was never fully achieved. 
 
-The lastest decisions have been to progressively re-architecture it to microservices. The first step was to lift and shift it to containers and run it in our Kubernetes cluster.
+The latest decisions have been to progressively re-architecture it to microservices. The first step was to lift and shift it to containers and run it in our Kubernetes cluster.
 
-Play around! You can run some tramsactions from the browser (click on the link from `your very own dashboard`). 
+Play around! You can run some transactions from the browser (click on the link from `your very own dashboard`). 
 
 ![easytravel-screen1](../../assets/images/easytravel-screen1.png)
 ![easytravel-screen2](../../assets/images/easytravel-screen2.png)

@@ -18,7 +18,7 @@ What we want to achieve with <b>Services</b> is having them showing up with name
 - What project is the <b>Service</b> part of. HaveFunCompany has multiple projects running in the same cluster.
 - The <b>Service</b> namespace, which in our case with Sock Shop also tells us if it's production or development.
 - The name of the container, which corresponds to our microservice name
-- Optionnally, the value of the `canary` annotation, which would the version of a canary release (e.g. v1, v2). Stable releases don't have this annotation.
+- Optionally, the value of the `canary` annotation, which would be the version of a canary release (e.g. v1, v2). Stable releases don't have this annotation.
 - In some cases, SpringBoot for example, there can be multiple web services for the same Java process. So we also want to see the Web Service name. 
 
 Let's start with the Sock Shop application

@@ -8,9 +8,9 @@ On the other hand, the teams in charge of development and support/ops of the Soc
 
 For example: 
 
-- the Sock Shop `carts` dev team only want to receive alerts related to the <b>carts</b> service running in <b>dev</b> on their Slack channel
-  - they don't want to receive anything related to <b>production</b> on that channel
-- the "carts support/ops team" only want to receive <b>production</b> related alerts on their channel and only those involving the <b>carts</b> service
+- the Sock Shop `carts` dev team only want to receive alerts related to the <b>carts</b> service running in <b>dev</b> on their Slack channel and also by email
+  - they don't want to receive anything related to <b>production</b> on that channel (or email)
+- the "carts support/ops team" only want to receive <b>production</b> related alerts on their channel (or email) and only those involving the <b>carts</b> service
 - both teams are using the Kubernetes platform but they are not in charge of it; this is the platform admin team who does that
   - in consequence, they don't want to receive infrastructure-only related alerts
 
@@ -52,8 +52,8 @@ For example:
 
 - In the menu, go in <i>Settings -> Alerting -> Alerting profiles</i>
 - Create a new profile named : `k8s infra`
-- In the <b>Define management zone filter for profile</b> select `[Kubernetes] My HOT k8s cluster`
-- Expand the <b>Resource alert</b> Severity Rule. Set the <b>Send notification if a problem remains open longer than</b> to `5 minutes`. Click <b>Save</b>.
+- In the <b>Define management zone filter for profile</b> select `k8s infra`
+- Expand the <b>Resource alert</b> Severity Rule. Set the <b>Send notification if a problem remains open longer than</b> to `0 minutes`. Click <b>Save</b>.
 - That's it! You can click <b>Done</b>
 
 
@@ -71,30 +71,30 @@ To save you death by clicking, you will import the <b>Alerting Profiles</b> for 
 $ ./create-alerting-profiles.sh
 ```
 
-### Create a Problem Notification mechanism for the Kubernetes platform admin team
+### Create a Problem Notification mechanism for the SockShop carts dev team
 
-You will set up problem notification to send emails to the Kubernetes platform admin team.
+You will set up problem notification to send emails to the SockShop carts dev team.
 
 - In the menu, go in <b>Settings -> Integrations -> Problem notifications</b> 
 - Click on <b>Set up notifications</b> 
 - Select <b>Email</b>
 
-    ![problem_notification_setup](../../assets/images/problem_notification_setup.png)
+    ![problem_notification_email](../../assets/images/carts-dev-problem-email.png)
 
 - Enter a name of your choice for the setting
-- Enter an email address <b>(1)</b>
+- Enter an email address
   - Use a real email address that you can access 
-- At the bottom, select the `k8s infra` Alerting Profile <b>(2)</b>
-- Click <b>Send test notification</b> to test your setup <b>(3)</b> 
-- Check you emails. You should have received a test problem notification email. If successful, click <b>Save</b> <b>(4)</b>
+- At the bottom, select the `sockshop carts dev` Alerting Profile
+- Click <b>Send test notification</b> to test your setup
+- Check you emails. You should have received a test problem notification email. If successful, click <b>Save</b>
 
-    ![k8s_team_notification_setup](../../assets/images/k8s_team_notification_setup.png)
+    ![problem_notification_email_profile](../../assets/images/problem_notification_email_profile.png)
 
 
 <b><ins>ONE LAST THING</ins></b> -> You should disable or delete your alerting profiles after this class if you don't want to continue receive alert emails.
 
 ---
 
-[Previous : #4 : Play with Management Zones](../04_Play_with_Management_Zones/README.md) :arrow_backward: :arrow_forward: [Next : #6 : Import Prometheus Metrics](../06_Import_Prometheus_Metrics/README.md)
+[Previous : #4 : Play with Management Zones](../04_Play_with_Management_Zones/README.md) :arrow_backward: :arrow_forward: [Next : #6 : Detect Performance Problems](../06_Detect_Problems/README.md)
 
 :arrow_up_small: [Back to overview](../README.md)
