@@ -62,7 +62,7 @@ In the Dynatrace console:
 - Add a nice header tile above it, with a title like : `Carts v1 vs v2`
 - Repeat the same steps for the new release of the service : `k8s-sockshop-production.carts v2 ItemsController`.
 
-In the emd, it should be something like this:
+In the end, it should be something like this:
 
 ![your_very_own_dashboard-4](../../assets/images/your-very-own-dashboard-4.png)
 

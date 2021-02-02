@@ -38,7 +38,7 @@ $ kubectl -n sockshop-dev create rolebinding default-view --clusterrole=view --s
 
 ### Wait... or not
 
-Normally you would have to wait between 5-10 minutes before the labels and annotations show up as tags and properties in Dynatrace for the <b>Processes</b> and <b>Services</b> entities. But you won't have to wait :grinning:. Those commands have already been executed during the environment bootstraping.
+Normally you would have to wait between 5-10 minutes before the labels and annotations show up as tags and properties in Dynatrace for the <b>Processes</b> and <b>Services</b> entities. But you won't have to wait :grinning:. Those commands have already been executed during the environment bootstrapping.
 
 In the Dynatrace console: 
 

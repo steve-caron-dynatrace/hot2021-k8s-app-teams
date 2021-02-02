@@ -14,6 +14,3 @@
 ### [#7 : Deploy a Canary](07_Deploy_a_Canary/README.md)
 ### [#8 : Import Prometheus Metrics](08_Import_Prometheus_Metrics/README.md)
 ### [#9 : Manage your Workload Resource Usage](09_Manage_Workload_Resource_Usage/README.md)
-
-
-
