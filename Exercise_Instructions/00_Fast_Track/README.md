@@ -141,7 +141,11 @@ $ kubectl apply -f ../sockshop/manifests/scenarios/carts-dev-new-build.yml
 ```
 The <b>carts</b> pod takes about 5 minutes to be ready.
 
-<b><u>TIME FOR A QUICK BREAK!</u></b>
+<b><u>TIME FOR A BREAK!</u></b>
+
+
+![keep-calm](../../assets/images/keep_calm.png)
+
 &nbsp;
 
 ### Problem analysis
@@ -333,6 +337,13 @@ $ kubectl apply -f  ../easytravel/compute-resources-quota.yaml
 $ kubectl delete po -l app=easytravel-backend -n easytravel
 ```
 &nbsp;
+
+### Flooded with problems! Such a perfect day...
+
+![keep-calm-murphy](../../assets/images/keep-calm-murphy.jpg)
+
+&nbsp;
+
 ### Fix the hipstershop paymentservice fix
 &nbsp;
 ```sh
