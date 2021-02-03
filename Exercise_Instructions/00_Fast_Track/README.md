@@ -191,6 +191,10 @@ $ ./deploy-carts-frontend-v2.sh
 
 &nbsp;
 
+But adding the exporter as a sidecar container is not sufficient...
+
+![mongodb-pod-template-annotations.png](../../assets/images/mongodb-pod-template-annotations.png)
+
 <b>From the web terminal:</b>
 
 ```sh
