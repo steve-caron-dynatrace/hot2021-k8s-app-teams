@@ -62,8 +62,11 @@ $ kubectl -n sockshop-dev create rolebinding default-view --clusterrole=view --s
 - Click on the edit icon (pencil) next to the screen title (Services). <b>(2)</b> Change the title to: `SockShop Prod services` and click on the check mark to confirm. 
 - Click on <b>Pin to dashboard</b> <b>(3)</b>
 
-## Exercise #3 Custom Service naming rules for Kubernetes
+![sockshop-prod-services-filtering](../../assets/images/sockshop-prod-services-filtering.png)
 &nbsp;
+
+## Exercise #3 Custom Service naming rules for Kubernetes
+
 ### Service naming rule for Sock Shop
 
 - Go in <b>Settings -> Server-side service monitoring -> Service naming rules</b> and click <b>Add a new rule</b>
@@ -78,25 +81,25 @@ $ kubectl -n sockshop-dev create rolebinding default-view --clusterrole=view --s
   - Enter this format : 
     - `k8s-{ProcessGroup:KubernetesNamespace}.{ProcessGroup:KubernetesContainerName} {ProcessGroup:Kubernetes:canary} {Service:WebServiceName}`
 
-
-## Exercise #4 Playing with Management Zones
 &nbsp;
+## Exercise #4 Playing with Management Zones
+
 Import Management Zones via REST API
 
 ```sh
 $ ./create-management-zones.sh
 ```
-
-## Exercise #5 Set up alert notifications
 &nbsp;
+## Exercise #5 Set up alert notifications
+
 Import Alerting Profiles via REST API
 
 ```sh
 $ ./create-alerting-profiles.sh
 ```
-
-## Exercise #06 Performance problem detection
 &nbsp;
+## Exercise #06 Performance problem detection
+
 ### Rollout new build
 
 ```sh
@@ -106,7 +109,8 @@ The <b>carts</b> pod takes about 5 minutes to be ready.
 
 <b><u>TIME FOR A QUICK BREAK!</u></b>
 &nbsp;
-#### Problem analysis
+
+### Problem analysis
 
 <b>Menu -> Problems</b>. You will see a turquoise header offering to try the new problem feed. Click on <b>Try it out</b>.
 
@@ -121,30 +125,27 @@ The <b>carts</b> pod takes about 5 minutes to be ready.
 ![carts-dev-response-time-hotspots](../../assets/images/carts-dev-response-time-hotspots.png)
 &nbsp;
 ![carts-dev-method-hotspots](../../assets/images/carts-dev-method-hotspots.png)
+&nbsp;
 
 ### Rollback
 
 ```sh
 $ kubectl rollout undo deployments carts --to-revision=1 -n sockshop-dev
 ```
-
+&nbsp;
 ## Exercise #7 Canary Deployment
-&nbsp;
 ### Let's deploy that v2!
-&nbsp;
 <b>From the web terminal:</b>
 
 ```sh
 $ ./deploy-carts-frontend-v2.sh
 ```
-
+&nbsp;
 ### Meanwhile, let's jump to exercise #8
 &nbsp;
 ## Exercise #8 Import Prometheus Metrics
-&nbsp;
-### Deploying carts-db with exporter sidecar and annotation
 
-&nbsp;
+### Deploying carts-db with exporter sidecar and annotation
 
 ![mongodb-pod-template-containers](../../assets/images/mongodb-pod-template-containers.png)
 
@@ -157,10 +158,10 @@ $ kubectl apply -f ../sockshop/manifests/scenarios/carts-db-with-prometheus-expo
 ```sh
 $ kubectl get po -l name=carts-db --all-namespaces -w
 ```
+&nbsp;
 ### Let's jump back to our SockShop promo
 &nbsp;
 ## Exercise #7 Canary Deployment
-&nbsp;
 ### Configure Istio to send traffic to v2
 &nbsp;
 ```sh
@@ -206,7 +207,7 @@ At the prompt, enter <b>1</b>.
 ### Meanwhile, back to our carts-db and Mongo Prometheus metrics
 &nbsp;
 ## Exercise #8 Import Prometheus Metrics
-&nbsp;
+
 <b>In Dynatrace</b>
 
 - Go in the new <b>Metrics</b> view
@@ -252,7 +253,6 @@ At the prompt, enter <b>1</b>.
 ### Back to the SockShop promo
 &nbsp;
 ## Exercise #7 Canary Deployment
-&nbsp;
 ### Removing the promo feature from the live site
 &nbsp;
 <b>From the web terminal:</b>
@@ -265,9 +265,9 @@ At the prompt, enter <b>2</b>.
 ```sh
 $ ./revert-to-v1-traffic-management.sh
 ```
-
-## Exercise #9 Managing your workload resource usage
 &nbsp;
+## Exercise #9 Managing your workload resource usage
+
 ### HipsterShop new paymentservice release
 &nbsp;
 ```sh
