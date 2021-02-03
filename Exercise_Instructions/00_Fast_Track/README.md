@@ -1,26 +1,24 @@
-## Fast - Instructions and commands only - minimum detail
+# Fast Track - Instructions and commands only - a few screenshots - minimum details
 
-### Exercise #1 Explore Your Environment
+## Exercise #1 Explore Your Environment
+### Dynatrace
 
-#### Dynatrace
-
-Dashboard:
+<b>Dashboard:</b>
 
 - <b>Menu -> Dashboards -> Dynatrace workshop dashboard template</b>
-- Clone the dashboard, give it an name of your choice
+- Clone the dashboard, give it a name of your choice
 
 
-#### Bastion Host
+### Bastion Host
 
 From the web terminal: 
 
 ```sh
 $ cd dynatrace-k8s/exercises
 ```
-
-### Exercise #2 Set up automatic import of Kubernetes labels and annotations
-
-#### Explore metadata in pod definitions
+&nbsp;
+## Exercise #2 Set up automatic import of Kubernetes labels and annotations
+### Explore metadata in pod definitions
 
 List all the Sock Shop pods running:
 
@@ -36,7 +34,8 @@ $ kubectl describe po -l app=carts -n sockshop-dev
 
 The OneAgent will use a pod <i>service account</i> to query for this metadata via the Kubernetes REST API.
 
-#### Grant viewer role to service accounts 
+&nbsp;
+### Grant viewer role to service accounts 
 
 <b>No need to execute these commands. It has been done already during the environment bootstrapping.</b>
 
@@ -54,7 +53,7 @@ Repeat the procedure for the `sockshop-dev` namespace.
 $ kubectl -n sockshop-dev create rolebinding default-view --clusterrole=view --serviceaccount=sockshop-dev:default
 ```
 
-#### Personal dashboard
+### Personal dashboard
 
 - Go to <b>Menu -> Transactions and Services</b>
 - In the filter text box <b>(1)</b>, select:
@@ -63,10 +62,10 @@ $ kubectl -n sockshop-dev create rolebinding default-view --clusterrole=view --s
 - Click on the edit icon (pencil) next to the screen title (Services). <b>(2)</b> Change the title to: `SockShop Prod services` and click on the check mark to confirm. 
 - Click on <b>Pin to dashboard</b> <b>(3)</b>
 
-### Exercise #3 Custom Service naming rules for Kubernetes
-
-#### Service naming rule for Sock Shop
+## Exercise #3 Custom Service naming rules for Kubernetes
 &nbsp;
+### Service naming rule for Sock Shop
+
 - Go in <b>Settings -> Server-side service monitoring -> Service naming rules</b> and click <b>Add a new rule</b>
 - Provide a name to the rule, for example : `Sock Shop service names`
 - First, we want this rule to apply only to containerized processes running in Kubernetes. This is done by defining a condition.
@@ -80,21 +79,25 @@ $ kubectl -n sockshop-dev create rolebinding default-view --clusterrole=view --s
     - `k8s-{ProcessGroup:KubernetesNamespace}.{ProcessGroup:KubernetesContainerName} {ProcessGroup:Kubernetes:canary} {Service:WebServiceName}`
 
 
-### Exercise #4 Playing with Management Zones
+## Exercise #4 Playing with Management Zones
+&nbsp;
+Import Management Zones via REST API
 
 ```sh
 $ ./create-management-zones.sh
 ```
 
-### Exercise #5 Set up alert notifications
+## Exercise #5 Set up alert notifications
+&nbsp;
+Import Alerting Profiles via REST API
 
 ```sh
 $ ./create-alerting-profiles.sh
 ```
 
-### Exercise #06 Performance problem detection
-
-#### Rollout new build
+## Exercise #06 Performance problem detection
+&nbsp;
+### Rollout new build
 
 ```sh
 $ kubectl apply -f ../sockshop/manifests/scenarios/carts-dev-new-build.yml
@@ -119,24 +122,53 @@ The <b>carts</b> pod takes about 5 minutes to be ready.
 &nbsp;
 ![carts-dev-method-hotspots](../../assets/images/carts-dev-method-hotspots.png)
 
-#### Rollback
+### Rollback
 
 ```sh
 $ kubectl rollout undo deployments carts --to-revision=1 -n sockshop-dev
 ```
 
-### Exercise #7 Canary Deployment
-
-#### Let's deploy that v2!
+## Exercise #7 Canary Deployment
+&nbsp;
+### Let's deploy that v2!
 &nbsp;
 <b>From the web terminal:</b>
 
 ```sh
 $ ./deploy-carts-frontend-v2.sh
 ```
+
+### Meanwhile, let's jump to exercise #8
+&nbsp;
+## Exercise #8 Import Prometheus Metrics
+&nbsp;
+### Deploying carts-db with exporter sidecar and annotation
+
+&nbsp;
+
+![mongodb-pod-template-containers](../../assets/images/mongodb-pod-template-containers.png)
+
+&nbsp;
+
+```sh
+$ kubectl apply -f ../sockshop/manifests/scenarios/carts-db-with-prometheus-exporter.yml
+```
+
+```sh
+$ kubectl get po -l name=carts-db --all-namespaces -w
+```
+### Let's jump back to our SockShop promo
+&nbsp;
+## Exercise #7 Canary Deployment
+&nbsp;
+### Configure Istio to send traffic to v2
+&nbsp;
 ```sh
 $ ./configure-v1-v2-traffic-management.sh
 ```
+&nbsp;
+
+### Let's keep an eye on v1 vs v2 in our own dashboard
 &nbsp;
 <b>In Dynatrace:</b>
 
@@ -171,35 +203,10 @@ $ ./toggle-sockshop-promo-ff.sh
 At the prompt, enter <b>1</b>.
 &nbsp;
 
-#### Removing the promo feature from the live site
-
-<b>From the web terminal:</b>
-
-```sh
-$ ./toggle-sockshop-promo-ff.sh
-```
-At the prompt, enter <b>2</b>.
+### Meanwhile, back to our carts-db and Mongo Prometheus metrics
 &nbsp;
-```sh
-$ ./revert-to-v1-traffic-management.sh
-```
-
-### Exercise #8 Import Prometheus Metrics
-
+## Exercise #8 Import Prometheus Metrics
 &nbsp;
-
-![mongodb-pod-template-containers](../../assets/images/mongodb-pod-template-containers.png)
-
-&nbsp;
-
-```sh
-$ kubectl apply -f ../sockshop/manifests/scenarios/carts-db-with-prometheus-exporter.yml
-```
-
-```sh
-$ kubectl get po -l name=carts-db --all-namespaces -w
-```
-
 <b>In Dynatrace</b>
 
 - Go in the new <b>Metrics</b> view
@@ -242,40 +249,72 @@ $ kubectl get po -l name=carts-db --all-namespaces -w
 
 &nbsp;
 
+### Back to the SockShop promo
+&nbsp;
+## Exercise #7 Canary Deployment
+&nbsp;
+### Removing the promo feature from the live site
+&nbsp;
+<b>From the web terminal:</b>
 
-### Exercise #9 Managing your workload resource usage
+```sh
+$ ./toggle-sockshop-promo-ff.sh
+```
+At the prompt, enter <b>2</b>.
+&nbsp;
+```sh
+$ ./revert-to-v1-traffic-management.sh
+```
 
+## Exercise #9 Managing your workload resource usage
+&nbsp;
+### HipsterShop new paymentservice release
+&nbsp;
 ```sh
 $ kubectl apply -f ../hipstershop/paymentservice-new.yaml
 ```
-
-```sh
-$ kubectl apply -f ../hipstershop/paymentservice-fix.yaml
-```
-
-```sh
-$ kubectl apply -f ../hipstershop/paymentservice-fix-the-fix.yaml
-```
-
+&nbsp;
+### EasyTravel new backend release
+&nbsp;
 ```sh
 $ ./toggle-easytravel-resources-scenario-1.sh
 ```
 
 At the prompt, enter `1` to enable the scenario.
-
+&nbsp;
+### Meanwhile, let's discuss resource management
+&nbsp;
+### A fix for paymentservice
+&nbsp;
+```sh
+$ kubectl apply -f ../hipstershop/paymentservice-fix.yaml
+```
+&nbsp;
+### Quota for EasyTravel
+&nbsp;
 ```sh
 $ kubectl apply -f  ../easytravel/compute-resources-quota.yaml 
 ```
 ```sh
 $ kubectl delete po -l app=easytravel-backend -n easytravel
 ```
-
+&nbsp;
+### Fix the hipstershop paymentservice fix
+&nbsp;
+```sh
+$ kubectl apply -f ../hipstershop/paymentservice-fix-the-fix.yaml
+```
+&nbsp;
+### Finally limits for EasyTravel
+&nbsp;
 ```sh
 $ kubectl apply -f ../easytravel/compute-limitrange.yaml
 $ kubectl delete rs -l app=easytravel-backend -n easytravel
 $ kubectl get po -n easytravel -w
 ```
-
+&nbsp;
+### That's it for the day - let's remove that backend build
+&nbsp;
 ```sh
 $ ./toggle-easytravel-resources-scenario-1.sh
 ```
