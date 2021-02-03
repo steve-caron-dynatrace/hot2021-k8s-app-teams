@@ -129,6 +129,8 @@ $ ./create-management-zones.sh
 ```sh
 $ ./create-alerting-profiles.sh
 ```
+![alerting-profiles](../../assets/images/alerting-profiles.png)
+
 &nbsp;
 ## Exercise #06 Performance problem detection
 
