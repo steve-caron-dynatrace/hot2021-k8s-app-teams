@@ -152,10 +152,12 @@ The <b>carts</b> pod takes about 5 minutes to be ready.
 
 <b>Menu -> Problems</b>. You will see a turquoise header offering to try the new problem feed. Click on <b>Try it out</b>.
 
-![carts-dev-problems-feed](../../assets/images/carts-dev-problems-feed.png)
-&nbsp;
 - <b>(1)</b> Filter by your <b>Alerting profile</b> : `sockshop carts dev`
 - <b>(2)</b> Click on `Response time degradation`
+&nbsp;
+![carts-dev-problems-feed](../../assets/images/carts-dev-problems-feed.png)
+&nbsp;
+
 &nbsp;
 ![carts-dev-problem-ticket](../../assets/images/carts-dev-problem-ticket.png)
 &nbsp;
@@ -189,6 +191,8 @@ $ ./deploy-carts-frontend-v2.sh
 
 &nbsp;
 
+<b>From the web terminal:</b>
+
 ```sh
 $ kubectl apply -f ../sockshop/manifests/scenarios/carts-db-with-prometheus-exporter.yml
 ```
@@ -201,7 +205,8 @@ $ kubectl get po -l name=carts-db --all-namespaces -w
 &nbsp;
 ## Exercise #7 Canary Deployment
 ### Configure Istio to send traffic to v2
-&nbsp;
+
+<b>From the web terminal:</b>
 ```sh
 $ ./configure-v1-v2-traffic-management.sh
 ```
@@ -307,13 +312,11 @@ $ ./revert-to-v1-traffic-management.sh
 ## Exercise #9 Managing your workload resource usage
 
 ### HipsterShop new paymentservice release
-&nbsp;
 ```sh
 $ kubectl apply -f ../hipstershop/paymentservice-new.yaml
 ```
 &nbsp;
 ### EasyTravel new backend release
-&nbsp;
 ```sh
 $ ./toggle-easytravel-resources-scenario-1.sh
 ```
@@ -321,15 +324,12 @@ $ ./toggle-easytravel-resources-scenario-1.sh
 At the prompt, enter `1` to enable the scenario.
 &nbsp;
 ### Meanwhile, let's discuss resource management
-&nbsp;
 ### A fix for paymentservice
-&nbsp;
 ```sh
 $ kubectl apply -f ../hipstershop/paymentservice-fix.yaml
 ```
 &nbsp;
 ### Quota for EasyTravel
-&nbsp;
 ```sh
 $ kubectl apply -f  ../easytravel/compute-resources-quota.yaml 
 ```
@@ -339,19 +339,18 @@ $ kubectl delete po -l app=easytravel-backend -n easytravel
 &nbsp;
 
 ### Flooded with problems! Such a perfect day...
+&nbsp;
 
 ![keep-calm-murphy](../../assets/images/keep-calm-murphy.jpg)
 
 &nbsp;
 
 ### Fix the hipstershop paymentservice fix
-&nbsp;
 ```sh
 $ kubectl apply -f ../hipstershop/paymentservice-fix-the-fix.yaml
 ```
 &nbsp;
 ### Finally limits for EasyTravel
-&nbsp;
 ```sh
 $ kubectl apply -f ../easytravel/compute-limitrange.yaml
 $ kubectl delete rs -l app=easytravel-backend -n easytravel
@@ -359,7 +358,6 @@ $ kubectl get po -n easytravel -w
 ```
 &nbsp;
 ### That's it for the day - let's remove that backend build
-&nbsp;
 ```sh
 $ ./toggle-easytravel-resources-scenario-1.sh
 ```
