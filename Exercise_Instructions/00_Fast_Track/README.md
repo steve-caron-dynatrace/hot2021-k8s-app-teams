@@ -84,15 +84,47 @@ $ kubectl -n sockshop-dev create rolebinding default-view --clusterrole=view --s
 &nbsp;
 ## Exercise #4 Playing with Management Zones
 
-Import Management Zones via REST API
+### Deploy Hipster Shop
+
+From the web terminal:
+```sh
+$ ./deploy-hipstershop.sh
+```
+
+### Create Management Zone for SockShop
+
+In Dynatrace:
+- Go in <b>Settings -> Preferences -> Management Zones</b>. Click <b>Add Management Zones</b>.
+- We will start with Sock Shop. Enter a name for the Management Zone : `app:sockshop`
+- Click <b>Add new rule</b>
+
+Based on Process groups <b>(1)</b>.
+Conditions:: <b>Process Group</b> tag <b>(2)</b>, `product`, auto-imported from a Kubernetes label and of value equal to `sockshop` <b>(3)</b> 
+
+![management_zone_rule_sockshop](../../assets/images/management_zone_rule_sockshop.png)
+
+- Click on <b>Preview</b>
+
+- To extend to <b>Services</b>, tick the associated check box. Leave <b>Hosts</b> unchecked.
+
+![extend_management_zone_rule](../../assets/images/extend_management_zone_rule.png)
+
+- Click on the <b>Create rule</b> button.
+- <u><b>DON'T FORGET</b> to click on the <b>Save</b> button!</u> 
+&nbsp;
+
+### Import the Management Zones via REST API
 
 ```sh
 $ ./create-management-zones.sh
 ```
+
+![management_zones](../../assets/images/management_zones.png)
+
 &nbsp;
 ## Exercise #5 Set up alert notifications
 
-Import Alerting Profiles via REST API
+### Import Alerting Profiles via REST API
 
 ```sh
 $ ./create-alerting-profiles.sh
