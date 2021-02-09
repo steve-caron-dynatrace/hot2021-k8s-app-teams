@@ -1,6 +1,7 @@
 # Fast Track - Instructions and commands only - a few screenshots - minimum details
 
 ## Exercise #1 Explore Your Environment
+
 ### Dynatrace
 
 <b>Dashboard:</b>

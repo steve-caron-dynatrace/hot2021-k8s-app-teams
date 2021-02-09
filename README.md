@@ -11,3 +11,5 @@ This page provides you with the class material :
 
 Each class participant have his/her own dedicated environment. 
 
+The scripts and files used to set up the lab environment are available on the following Github repo: https://github.com/steve-caron-dynatrace/dynatrace-k8s 
+
