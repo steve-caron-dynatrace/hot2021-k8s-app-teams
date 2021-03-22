@@ -1,5 +1,7 @@
 # Fast Track - Instructions and commands only - a few screenshots - minimum details
 
+The detailed version of this workshop, including the narrative and the step-by-step detailed instructions is available here: https://github.com/steve-caron-dynatrace/hot2021-k8s-app-teams 
+
 ## Exercise #1 Explore Your Environment
 
 ### Dynatrace
