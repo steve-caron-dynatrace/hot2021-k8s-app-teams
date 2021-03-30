@@ -88,7 +88,7 @@ Anyway... the outcomes of this is the Sock Shop project. The company hired the b
 
 Of course, the CIO decided that it <i>has</i> to be cloud-native and run on Kubernetes. You have been transferred from EasyTravel to Sock Shop and named the application lead, with the responsibility to make this new business technically successful.
 
-- A important factor in the success of cloud-native and microservices initiatives is the ability to get <i>observability</i>. 
+- An important factor in the success of cloud-native and microservices initiatives is the ability to get <i>observability</i>. 
 - You have been using Dynatrace to provide 360 degrees insights on EasyTravel, the company flagship application. But EasyTravel is a monolithic app that has only been recently lifted and shifted to run in containers.
 - Sock Shop is a very different beast. It's designed to be cloud-native. Your Dynatrace account exec told you Dynatrace works with cloud-native. Well, it's time to give it a shot! :metal:
 

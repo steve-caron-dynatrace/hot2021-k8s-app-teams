@@ -46,7 +46,7 @@ We want to keep an eye on a specific web service method of the `carts` service, 
 In the Dynatrace console:
 
 - Go to the <b>Transactions and Services</b> view
-- Find the `k8s-sockshop-dev.carts ItemsController` service and drill-down to it
+- Find the `k8s-sockshop-production.carts ItemsController` service and drill-down to it
 - Click on the <b>View requests</b> button
 
 ![k8s-sockshop-production.carts-ItemsController-service-view](../../assets/images/k8s-sockshop-production.carts-ItemsController-service-view.png)
